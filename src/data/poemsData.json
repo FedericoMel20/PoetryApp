@@ -1,0 +1,921 @@
+[
+  {
+    "id": 1,
+    "title": "Begin again — the heart remembers how.",
+    "author": "Jakuta",
+    "category": "Quotes",
+    "rating": 4.1,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80",
+    "content": "Begin again — the heart remembers how."
+  },
+  {
+    "id": 2,
+    "title": "Your Echo",
+    "author": "A. Whisper",
+    "category": "Love",
+    "rating": 4,
+    "ratingComments": [
+      "Beautifully raw and true."
+    ],
+    "image": "https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1000&q=80",
+    "content": "The greatest fear of loving is the silence that follows when the sound of a voice finally fades. We brace ourselves for the profound, uninhabited stillness of the air.\n\nBut a love this deep does not merely cease; it sets up a permanent residence in the very material of the mind, becoming the perfect acoustic of memory.\n\nI listen, and I find your echo is not merely a fading return of sound, but the entire, resonant structure of my world, a comforting wave that returns exactly when the silence threatens to become too loud."
+  },
+  {
+    "id": 3,
+    "title": "Blue Letter",
+    "author": "Ous",
+    "category": "Melancholy",
+    "rating": 5,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1000&q=80",
+    "content": "There is a velvet ache that lives beneath the ribs—an old map of absence where every road leads inward.\n\nI trace the lines with trembling fingers, and find memory is a room furnished with broken light and soft dust.\n\nEven joy, when it comes, arrives with a shadow; the heart remembers the taste of rain and keeps a place for it."
+  },
+  {
+    "id": 4,
+    "title": "Eclipse",
+    "author": "L. Amara",
+    "category": "Night",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
+    "content": "The light remembers how to fail, folding inward like a sudden, heavy wing. For one heart-stopping moment, the grand machine of the cosmos admits a silent flaw.\n\nIt is not darkness that falls, but a perfect, inverted dawn—a ring of cold fire crowning a disc of absolute night. A truth revealed only when the sun steps behind the moon's stark face.\n\nTime becomes meaningless, hushed by this celestial drama. We stand humbled, realizing the most magnificent events are those that require nothing of us but our rapt, astonished quiet."
+  },
+  {
+    "id": 5,
+    "title": "Woven Light",
+    "author": "Ous",
+    "category": "Dreams",
+    "rating": 4.9,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+    "content": "Sleep is merely the dismantling of the day’s harsh frame, allowing the true architect—the dreaming mind—to begin its silent, brilliant work.\n\nHere, logic is a forgotten tongue, and scenes are built from the sheer, unbridled possibility of color and sound, spun from the fine, fragile threads of memory and desire.\n\nIt is in this deeply private world that we see the soul’s truest fabric: not a plain cloth, but a tapestry of woven light, showing us the self we are quietly, desperately fighting to become."
+  },
+  {
+    "id": 6,
+    "title": "The Unplanned Symphony of a Perfect Moment",
+    "author": "L. Vale",
+    "category": "Happy",
+    "rating": 4.3,
+    "ratingComments": [
+      "This one stayed with me through the night."
+    ],
+    "image": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80",
+    "content": "It arrives without fanfare, skipping the script and the rehearsal—a sudden, dissonant chord of laughter, a shaft of perfect light falling where it shouldn't, a phrase of music heard from a closed window.\n\nThis perfect moment is composed of accidents: the missed step that led to a better path, the wrong coffee order that sparked a great idea, the unforeseen glance that changed the rhythm of your day entirely.\n\nIt teaches the soul to abandon the conductor’s baton and simply listen. True joy is never planned; it is the spontaneous, glorious crescendo that occurs only when you are wholly present and utterly, gratefully surprised."
+  },
+  {
+    "id": 7,
+    "title": "The Topography of a Warm Blanket",
+    "author": "Federico Mel",
+    "category": "Comfort",
+    "rating": 4.3,
+    "ratingComments": [
+      "Beautifully raw and true."
+    ],
+    "image": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1000&q=80",
+    "content": "The edges are the borders of a private kingdom, where the laws of worry hold no jurisdiction. The folds and rumples are the soft, familiar valleys where every tired muscle finds its rest.\n\nIt is a landscape built purely for surrender—a quiet rebellion against the cold, hard certainty of the outside world, creating a temporary, perfect climate of ease.\n\nTo pull it high is to chart a course for deep, healing silence, recognizing that sometimes, the greatest adventure is the humble journey inward, where every hill and hollow is a haven."
+  },
+  {
+    "id": 8,
+    "title": "You will face many defeats in life, but never let yourself be defeated.",
+    "author": "Maya Angelou",
+    "category": "Quotes",
+    "rating": 4.5,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1000&q=80",
+    "content": "You will face many defeats in life, but never let yourself be defeated."
+  },
+  {
+    "id": 9,
+    "title": "Our Atlas",
+    "author": "Jakuta",
+    "category": "Love",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=80",
+    "content": "The memory of a single journey is fragile, easily blurred by time, but a shared life is a bound book—a detailed, gorgeous atlas we have colored in, page by careful page.\n\nEvery argument is a mountain range crossed; every quiet, easy morning is a vast, calm ocean; every shared secret is a hidden, precious spring marked only for our eyes.\n\nWe may forget the names of the streets we've walked, but we will never lose the scale of our intimacy. This atlas is our most sacred text, a proof that the most complex and beautiful world we will ever explore is the one we built together."
+  },
+  {
+    "id": 10,
+    "title": "Quietly, It Breaks",
+    "author": "K. Solen",
+    "category": "Melancholy",
+    "rating": 4.1,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80",
+    "content": "The greatest collapses never arrive with a shout, but with a hush—a slow, internal surrender that is not visible from the outside, only felt as a deep, structural shift in the dark.\n\nThe mind watches, helpless, as the perfect architecture of a certainty—a hope, a truth, a belief—begins its inevitable, gentle failure, one silent hairline fracture at a time.\n\nThere is no drama, only a profound, intimate knowledge that the foundation is giving way, proving that the most life-altering moments are often the ones the world never hears. It is the peace of final, quiet acceptance."
+  },
+  {
+    "id": 11,
+    "title": "Whispering Dark",
+    "author": "C. Hope",
+    "category": "Night",
+    "rating": 4.1,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=1000&q=80",
+    "content": "The darkness is not silence, but a lowered voice—a soft rustle of secrets shared between the sleeping trees and the shifting, invisible currents of the air.\n\nIt leans in close, a presence without form, inviting the mind to abandon the harsh geometry of the day and drift into the fluid logic of dreams.\n\nEvery lost worry is absorbed by this deep, comforting void; the whispering dark holds a mirror not to the face you show the world, but to the quiet, ancient heart beneath it, finally at peace."
+  },
+  {
+    "id": 12,
+    "title": "Otherworld",
+    "author": "A. Whisper",
+    "category": "Dreams",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
+    "content": "The mind constructs a secret geography where gravity is merely a suggestion and the colors possess names the waking tongue cannot pronounce.\n\nIt is an easy crossing, this silent passage into the otherworld; no passport required, only the surrender of your daily, measured self to the vast, illogical ocean.\n\nHere, the dead speak freely, and the future shows its hand in impossible landscapes. You return with nothing tangible, yet profoundly altered, carrying the faint, strange perfume of a place that exists only for you."
+  },
+  {
+    "id": 13,
+    "title": "The Kinetic Energy of Glee",
+    "author": "K. Solen",
+    "category": "Happy",
+    "rating": 4,
+    "ratingComments": [
+      "Pain and grace tangled in a single verse."
+    ],
+    "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1000&q=80",
+    "content": "It is the sudden, beautiful violation of Newton’s first law—the stillness of your worries is instantly overcome by the joyful, unpredictable friction of a moment well-lived.\n\nThis glee is a force with mass; it demands motion, accelerating the heart until the beat becomes a light, rapid drum against the ribs. The feet may tap, the mouth may laugh, but the source is deep.\n\nIt is the proof that happiness is not a gentle state of rest, but an active, radiant explosion—a self-sustaining momentum that needs nothing more than the open air and the sheer pleasure of being in flight."
+  },
+  {
+    "id": 14,
+    "title": "Soft Landing",
+    "author": "A. Whisper",
+    "category": "Comfort",
+    "rating": 4.9,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=1000&q=80",
+    "content": "The wind of the struggle is high, the flight long and turbulent—there is always a fear that the final descent will be a sudden, shattering impact against the hard truth.\n\nBut the true ground of the spirit is not unforgiving stone; it is the deliberate, profound recognition that you have the internal power to create your own quiet cushion of acceptance.\n\nThe soft landing is achieved not by luck, but by the conscious decision to unfurl the parachute of self-compassion, allowing the weight of the day to settle without judgment. You are finally, gently, home."
+  },
+  {
+    "id": 15,
+    "title": "The wound is the place where the Light enters you.",
+    "author": "Rumi",
+    "category": "Quotes",
+    "rating": 4.5,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?auto=format&fit=crop&w=1000&q=80",
+    "content": "The wound is the place where the Light enters you."
+  },
+  {
+    "id": 16,
+    "title": "Bone-Deep",
+    "author": "A. Noctis",
+    "category": "Love",
+    "rating": 4.1,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1000&q=80",
+    "content": "Most affections are worn on the surface, felt on the skin like a passing breeze or the heat of a temporary sun. But the rarest connections demand a deeper architecture.\n\nThis love is not merely an emotion housed in the heart; it is the silent, essential scaffolding that holds the entire structure of the self—a truth woven into the very marrow of being.\n\nTo be loved bone-deep is to be known at the level of core survival, where faith is a fundamental, structural certainty. It is the peace of knowing you are built, not just felt, into the necessary blueprint of another life."
+  },
+  {
+    "id": 17,
+    "title": "The Elegant Unraveling",
+    "author": "H. Luna",
+    "category": "Melancholy",
+    "rating": 4.1,
+    "ratingComments": [
+      "Pain and grace tangled in a single verse."
+    ],
+    "image": "https://images.unsplash.com/photo-1494548162494-384bba4ab999?auto=format&fit=crop&w=1000&q=80",
+    "content": "The greatest sorrow is often found not in the sudden, violent break, but in the slow, deliberate release—the conscious choice to loosen the perfect, painful knot that once held everything together.\n\nIt is an act of gentle, resigned strength, recognizing that the spirit cannot hold something meant to be free. The structure of the past is not destroyed; it is simply allowed to shed its necessary, beautiful form.\n\nThere is a quiet, profound grace in watching a certainty dissolve. The elegance is in the surrender, trusting that what remains is not emptiness, but the simple, true thread of yourself, ready to be woven into something new."
+  },
+  {
+    "id": 18,
+    "title": "The Conspiracy of Fireflies",
+    "author": "L. Vale",
+    "category": "Night",
+    "rating": 4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=80",
+    "content": "The dark is never truly empty, only waiting for the signal—a hush that thickens before the first tiny lamp ignites on the edge of the tall grass.\n\nSoon, they gather in the humid velvet air, a fleet of secret lights sketching silent, urgent messages across the black canvas of the woods. They are the quick pulse of the night's nervous system.\n\nThis conspiracy of fireflies holds the fleeting truth: that even the smallest, most momentary spark can defy the absolute dominion of shadow, reminding the earth of a thousand unsaid, incandescent things."
+  },
+  {
+    "id": 19,
+    "title": "Secret Self",
+    "author": "H. Luna",
+    "category": "Dreams",
+    "rating": 4.9,
+    "ratingComments": [
+      "Haunting and unforgettable.",
+      "Intense and moving."
+    ],
+    "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1000&q=80",
+    "content": "There is a quiet, mirrored room deep inside the skull where the frantic world cannot follow, and the masks of the day are finally allowed to fall away.\n\nHere, the heart speaks in its native tongue—not in arguments or apologies, but in the pure, unfiltered language of desire and fear, utterly known only to the silent listener.\n\nThis secret self is the truest resident, demanding no performance, only recognition. And it is only when we sit with this silent witness that we discover the true, fierce courage required simply to be."
+  },
+  {
+    "id": 20,
+    "title": "The Recipe for a Light Heart",
+    "author": "A. Whisper",
+    "category": "Happy",
+    "rating": 4.9,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80",
+    "content": "First, measure out two large spoons of forgiveness for all the small, silly things that snagged your day. Toss in a generous pinch of loud, genuine laughter—the kind that makes your eyes crinkle.\n\nNext, warm the mixture gently with the memory of a kindness you gave, and fold in the simple pleasure of a perfect, quiet cup of tea, taken without rush or regret.\n\nSimmer until the heavy coat of worry has evaporated, and what remains is purely essential: a bright, buoyant core that requires nothing more than the simple, happy decision to float."
+  },
+  {
+    "id": 21,
+    "title": "Still Point",
+    "author": "R. Nive",
+    "category": "Comfort",
+    "rating": 4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=1000&q=80",
+    "content": "The center of the turning world is not out there, fixed in the cold geometry of the cosmos, but here—a tiny, inviolable calm deep within the hurricane of the heart.\n\nIt is the moment the breath remembers its rhythm, choosing quiet constancy over frantic reaction, acknowledging the chaos without being absorbed by its roar.\n\nTo locate the still point is the ultimate act of self-possession: the conscious, grounding truth that even when everything else is in motion, the deepest core of you remains perfectly, profoundly, and effortlessly at peace."
+  },
+  {
+    "id": 22,
+    "title": "It always seems impossible until it's done.",
+    "author": "Nelson Mandela",
+    "category": "Quotes",
+    "rating": 4.6,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=1000&q=80",
+    "content": "It always seems impossible until it's done."
+  },
+  {
+    "id": 23,
+    "title": "First Language",
+    "author": "F. Melano",
+    "category": "Love",
+    "rating": 4.4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1000&q=80",
+    "content": "Before all the heavy words we learn—the arguments and the apologies—there was just a simple, pure sound, a hum that knew only how to ask for and give warmth.\n\nThat soft, first language wasn't built on grammar or rules; it was made entirely of touch, the knowing silence of shared comfort, and the quick, true rhythm of two hearts beating nearby.\n\nThis is why, after all the messy noise of the day, turning to you feels like coming home to a tongue I never forgot. It’s the easy, original dialect of belonging, the one language we learned perfectly together before the world taught us how to talk."
+  },
+  {
+    "id": 24,
+    "title": "Learning the Language of Letting Go",
+    "author": "E. Ray",
+    "category": "Melancholy",
+    "rating": 4.8,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1000&q=80",
+    "content": "There is a velvet ache that lives beneath the ribs—an old map of absence where every road leads inward.\n\nI trace the lines with trembling fingers, and find memory is a room furnished with broken light and soft dust.\n\nEven joy, when it comes, arrives with a shadow; the heart remembers the taste of rain and keeps a place for it. There is a small, stubborn light that refuses to be named, and in it we find our reasons to continue."
+  },
+  {
+    "id": 25,
+    "title": "Midnight Bloom",
+    "author": "A. Whisper",
+    "category": "Night",
+    "rating": 4.2,
+    "ratingComments": [
+      "Haunting and unforgettable."
+    ],
+    "image": "https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=1000&q=80",
+    "content": "The darkness is a fertile soil, not a void. It is the hour when the seeds of quiet resilience, long dormant, decide they are ready to break the surface.\n\nThere is a soft, unheard unfurling—a midnight bloom of intention that happens far from the judging light of day. This fragile growth is the truest kind of power.\n\nIt whispers a profound, undeniable truth: that hope is not a shout but a slow, determined petal opening against the vast, sleeping sky, demanding its own silent, perfect time."
+  },
+  {
+    "id": 26,
+    "title": "The Key",
+    "author": "C. Hope",
+    "category": "Dreams",
+    "rating": 4.5,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80",
+    "content": "Every deep dream carries a weight beyond its fleeting color—a single, inexplicable tool left in the hand of the waking self, whose purpose is immediately forgotten.\n\nIt is the key to the door you didn’t know was there; a door to a room where all the unfinished conversations and the unacted desires still wait, perfectly preserved.\n\nThe real struggle is not finding the key, but recognizing it for what it is: a quiet instruction from the subconscious, urging you to unlock the cage you built in daylight and reclaim the possibility you misplaced."
+  },
+  {
+    "id": 27,
+    "title": "The Gospel of a Good Day",
+    "author": "L. Vale",
+    "category": "Happy",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1483794344563-d27a8d18014e?auto=format&fit=crop&w=1000&q=80",
+    "content": "The true scripture is not bound in leather, but written in the perfect, fleeting arc of sunlight on a kitchen table and the simple, unquestioned comfort of warm, worn-out shoes.\n\nIt preaches a powerful, immediate doctrine: that grace is found in the unhurried moment, and salvation requires nothing more than a genuine smile shared without expectation.\n\nCarry this gospel not in your hand, but in your easy, swinging stride. It proves that the deepest wisdom is always light, and the highest commandment is simply to fully inhabit the joy you are given right here, right now."
+  },
+  {
+    "id": 28,
+    "title": "The Cartography of Kindness",
+    "author": "Jakuta",
+    "category": "Comfort",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=1000&q=80",
+    "content": "The memory often defaults to charting wounds and breaches—the deep, cold currents of regret and the high, impassable mountains of fear. But this is not the only true map.\n\nLook closer, for the real terrain is marked by gentle, unexpected rivers of aid; the small, unplanned gestures that provided water exactly when the soul was dry.\n\nTrue comfort is found in tracing these hidden routes: every hand held, every quiet affirmation, every soft harbor you've been granted. Map these islands of grace, and you will never truly be lost."
+  },
+  {
+    "id": 29,
+    "title": "The only true wisdom is in knowing you know nothing.",
+    "author": "Socrates",
+    "category": "Quotes",
+    "rating": 4.9,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+    "content": "The only true wisdom is in knowing you know nothing."
+  },
+  {
+    "id": 30,
+    "title": "Your Smile",
+    "author": "A. Whisper",
+    "category": "Love",
+    "rating": 4.6,
+    "ratingComments": [
+      "The mind is a light, chaotic thing, often spinning out into the unnecessary void of 'what if' and 'what should be,' always threatening to drift away from the present moment.\n\nBut your smile acts as a sudden, massive force in my personal cosmos—an immediate, beautiful certainty that pulls every stray thought, every fragmented worry, back into a perfect orbit.\n\nIt is the anchor and the source of all my warmth. To look upon that simple curve is to be reminded that the truest power in the universe is not the violent force that explodes, but the quiet, constant pressure that holds everything together."
+    ],
+    "image": "https://images.unsplash.com/photo-1502786129293-79981df4e689?auto=format&fit=crop&w=1000&q=80",
+    "content": "In the crucible of longing, hearts are shaped and remade. I remember the weight of your name as if it were a stone I carried in the dark.\n\nWe loved like fugitives: with urgency and confessions at midnight. The world outside could not see the architecture of our surrender.\n\nYet in the hollow moments I learn that love is not always rescue; sometimes it is a slow, exquisite unlearning of one's loneliness. There is a small, stubborn light that refuses to be named, and in it we find our reasons to continue."
+  },
+  {
+    "id": 31,
+    "title": "Gorgeous Sorrow",
+    "author": "J. Vale",
+    "category": "Melancholy",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=1000&q=80",
+    "content": "The rain outside has a certain silver cadence—a sound that polishes the glass of old memory until it gleams with cold, perfect light.\n\nI hold the sorrow of this hour like a smooth, heavy stone. It is not pain that claws, but a quiet, breathtaking weight, beautiful in its sheer inevitability.\n\nThis grief wears the colors of twilight and old wine; it is gorgeous only because it is wholly mine, woven from the threads of what was promised and what was truly given. In its shadow, the heart learns its deepest songs."
+  },
+  {
+    "id": 32,
+    "title": "The Poetry of a Sleeping World",
+    "author": "A. Whisper",
+    "category": "Night",
+    "rating": 4.9,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1000&q=80",
+    "content": "The great silence falls not as an ending, but as a vast, receptive page on which new stanzas are written by the absence of human voice.\n\nIt is the poetry of quiet breathing: the long, slow, iambic rhythm of the tide and the turning of the moon, punctuated by the soft percussion of distant, settled stone.\n\nI listen for the grammar of the empty street, the syntax of shadow and streetlight; finding that the deepest truths are always whispered when the world closes its eyes and lets the dreaming begin."
+  },
+  {
+    "id": 33,
+    "title": "Fable of Sleep",
+    "author": "J. Vale",
+    "category": "Dreams",
+    "rating": 4.5,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1473187983305-f615310e7daa?auto=format&fit=crop&w=1000&q=80",
+    "content": "Dreams are cartographers for worlds that do not ask permission to exist. They pull at the edge of sleep and stitch new rivers into the map of you.\n\nI have walked entire landscapes in a single breath; remembered a life I did not live and woke with a tenderness for the impossible.\n\nEach morning the dream dissolves like sugar; each night I go back to harvest what remains."
+  },
+  {
+    "id": 34,
+    "title": "Morning Bright",
+    "author": "L. Vale",
+    "category": "Happy",
+    "rating": 4.9,
+    "ratingComments": [
+      "Pain and grace tangled in a single verse.",
+      "I read this and wanted to cry."
+    ],
+    "image": "https://images.unsplash.com/photo-1508830524289-0adcbe822b40?auto=format&fit=crop&w=1000&q=80",
+    "content": "Joy arrives like a bell unstruck—sudden, insistent, undeniable. It lifts the corners of the ordinary and folds them into something luminous.\n\nWe learn the language of small goodnesses: a warm cup, the tilt of light through glass, a laugh that unfastens the chest.\n\nWhen joy is honest, it sustains; it is not the absence of pain but rather a stubborn brightness pressed into the seams of life."
+  },
+  {
+    "id": 35,
+    "title": "Hearthsong",
+    "author": "A. Whisper",
+    "category": "Comfort",
+    "rating": 4.6,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
+    "content": "Comfort is not a loud thing; it is the quiet hand that steadies the shoulder, the slow hush that tells you you may breathe again.\n\nIt gathers up the fragments of a day and makes a kind of shelter, enough to sit within while the weather passes.\n\nTo be comforted is to learn the slow art of returning to yourself."
+  },
+  {
+    "id": 36,
+    "title": "The journey of a thousand miles begins with one step.",
+    "author": "Lao Tzu",
+    "category": "Quotes",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1000&q=80",
+    "content": "The journey of a thousand miles begins with one step."
+  },
+  {
+    "id": 37,
+    "title": "My Fixed Point",
+    "author": "L. Vale",
+    "category": "Love",
+    "rating": 4.9,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80",
+    "content": "The great constant of the day is change—the subtle, continuous drift of time and feeling that makes the self a stranger to the self from hour to hour. We search for ground that will not betray us.\n\nBut you exist as a profound mathematical certainty in my fluid world. You are the one coordinate I can always plot, the destination that remains perfectly still while everything else rushes past.\n\nTo know you are my fixed point is the ultimate freedom. I can turn my spirit out toward the vast, bewildering chaos, confident that when I return, your light will be exactly where I left it, welcoming me home."
+  },
+  {
+    "id": 38,
+    "title": "Bitter Comfort",
+    "author": "R. Nive",
+    "category": "Melancholy",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1000&q=80",
+    "content": "The greatest betrayal is not the sudden wound, but the loss of a pain that had become known. We cling to the very ache that hurts, finding strange shelter in its familiar, heavy rhythm.\n\nThis is the bitter comfort: the certainty that comes from knowing exactly where the sorrow resides, making it a reliable, private companion in a world full of unpredictable joy and fleeting ease.\n\nIt is the truth of the difficult path. Let the easy remedies pass you by; sometimes, the most profound healing is found in accepting the sting of a known reality, and resting in the strange, dark peace of what simply is."
+  },
+  {
+    "id": 39,
+    "title": "Star-Stitched",
+    "author": "K. Solen",
+    "category": "Night",
+    "rating": 4.2,
+    "ratingComments": [
+      "Haunting and unforgettable."
+    ],
+    "image": "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=1000&q=80",
+    "content": "The soul is sometimes a torn thing, a fragile fabric frayed by the rough hands of yesterday's battles and the sheer, exhausting weight of staying whole.\n\nBut the night is a patient tailor. It takes the threads of quiet determination and begins the slow, deliberate work of mending the breaches, one luminous spark at a time.\n\nLook up and remember: every piece of your patched-up history is valuable. You are not broken, but beautifully restored, stitched together not with common thread, but with the cold, enduring fire of the stars."
+  },
+  {
+    "id": 40,
+    "title": "Echo-Verse",
+    "author": "H. Luna",
+    "category": "Dreams",
+    "rating": 4.8,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1000&q=80",
+    "content": "The great, dark expanse is not silent, but a constant, slow hum—the residue of a billion years of sound waves still rippling outward, seeking a final place to rest.\n\nWe mistake the quiet for emptiness, yet every thought we release, every spoken wish, is only a tiny echo sent into the macrocosmic chamber, destined to return in some form.\n\nListen closely in the deep night: the universe is only answering your own voice, proving that there is no boundary between the vast field of stars and the small, resonant cavity of your chest."
+  },
+  {
+    "id": 41,
+    "title": "Golden",
+    "author": "A. Whisper",
+    "category": "Happy",
+    "rating": 4.5,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1000&q=80",
+    "content": "There are truths that exist beyond the mutable currency of the day—moments of pure, unblemished light that feel heavy in the palm, like ancient, flawless coins.\n\nThis is the quality of a well-earned joy: it carries the weight of history and the promise of endless shine, never losing its radiant value to the passing shadow.\n\nHold it close and remember that your essence, your core ability to find grace, is fundamentally golden. This light cannot be spent, only shared, growing brighter with every generous release."
+  },
+  {
+    "id": 42,
+    "title": "Life is like riding a bicycle. To keep your balance you must keep moving.",
+    "author": "Albert Einstein",
+    "category": "Quotes",
+    "rating": 4.4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1494548162494-384bba4ab999?auto=format&fit=crop&w=1000&q=80",
+    "content": "Life is like riding a bicycle. To keep your balance you must keep moving."
+  },
+  {
+    "id": 43,
+    "title": "The Religion of Our Love",
+    "author": "A. Noctis",
+    "category": "Love",
+    "rating": 4.4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=1000&q=80",
+    "content": "There is no temple large enough to house this kind of devotion, no public creed required, only the silent, absolute covenant made between two quiet souls.\n\nOur rituals are small, essential acts: the unhurried morning silence, the familiar weight of a head on a shoulder, the shared certainty that the other is the single, unassailable truth in a world built on fleeting doubt.\n\nThis is the purest faith, requiring no grand pronouncements, only the simple, continuous act of belief. We worship not a distant deity, but the immediate, sheltering grace found in the sanctity of our own shared space."
+  },
+  {
+    "id": 44,
+    "title": "The Music of What is Missing",
+    "author": "K. Solen",
+    "category": "Melancholy",
+    "rating": 4.4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80",
+    "content": "The memory of a sound is not the memory of silence, but a profound negative space—the empty, perfect geometry around the one instrument that has ceased to play.\n\nIt is the deep, audible resonance of absence, the note that is supposed to be struck but isn't, creating a harmony that is quieter, more piercing, and more truthful than any loudness.\n\nListen closely, and you will learn the final, most necessary composition of sorrow: the beautiful, enduring music created by the lack of a familiar presence, proving that nothing truly loved ever entirely disappears."
+  },
+  {
+    "id": 45,
+    "title": "The Ceremony of Moonrise",
+    "author": "A. Noctis",
+    "category": "Night",
+    "rating": 4.6,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+    "content": "The sky unlatches its dark lid, and the world holds its breath—a sacred, suspended moment where the noise of the day dissolves into whispered prophecy.\n\nThe moon is not merely appearing, but rising in a slow, white ritual; an offering of silver light poured over the shoulders of the hills until the shadows become velvet things.\n\nI stand witness to this quiet ascent, feeling the ancient rhythm adjust within my own chest. It is a ceremony of turning inward, where every tiny star is a single, hushed secret shared between the night and the lonely heart."
+  },
+  {
+    "id": 46,
+    "title": "Mind-Palace",
+    "author": "L. Deyan",
+    "category": "Dreams",
+    "rating": 4.2,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1000&q=80",
+    "content": "The greatest architecture is built not of stone, but of silence and intention—an infinite structure contained entirely within the skull’s quiet dome.\n\nIt is here that the raw nature of self resides: a vast, echoing museum where every memory is cataloged, every fear is a locked room, and every hope is a winding, sunlit corridor.\n\nTo wander this inner cosmos is the highest form of exploration. Though the walls are private, the light that streams through the high windows is shared only with the stars, proving that the deepest space is always internal."
+  },
+  {
+    "id": 47,
+    "title": "Sunburst",
+    "author": "K. Solen",
+    "category": "Happy",
+    "rating": 4.1,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=1000&q=80",
+    "content": "It’s the sudden, unearned joy that breaks through the ceiling of gray—the exact moment the world decides to stop whispering and starts singing at the very top of its golden lungs.\n\nThis happiness isn't quiet; it's a brilliant, blinding flash, a burst of warmth that chases every stubborn shadow back to its corner and demands that you drop whatever you're doing and just grin.\n\nIt’s the simple, dazzling promise that light always wins the argument with the darkness, and the heart, relieved of its heavy coat, remembers how utterly, ridiculously good it feels to be alive right now"
+  },
+  {
+    "id": 48,
+    "title": "Be yourself; everyone else is already taken.",
+    "author": "Oscar Wilde",
+    "category": "Quotes",
+    "rating": 5,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1502786129293-79981df4e689?auto=format&fit=crop&w=1000&q=80",
+    "content": "Be yourself; everyone else is already taken."
+  },
+  {
+    "id": 49,
+    "title": "The Cartography of Your Pulse",
+    "author": "E. Ray",
+    "category": "Love",
+    "rating": 4.1,
+    "ratingComments": [
+      "Pain and grace tangled in a single verse.",
+      "I return to this one always."
+    ],
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
+    "content": "The simplest beat is the greatest map—a soundless drum driving the wild, essential rivers of your life, charting a course that is entirely yours and yet, irrevocably twined with mine.\n\nI listen for the rhythm beneath the skin, tracing the fragile, undeniable boundaries of your being, finding that the true geography of closeness is measured not in miles, but in syncopated, shared silence.\n\nTo know your pulse is to know the deepest, quietest truth you possess. It is the life-song that guides me home, proving that the most profound terrain is always found just below the surface."
+  },
+  {
+    "id": 50,
+    "title": "Velvet Pain",
+    "author": "M. Solara",
+    "category": "Melancholy",
+    "rating": 4.4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1502786129293-79981df4e689?auto=format&fit=crop&w=1000&q=80",
+    "content": "There is a quiet despair that settles like fine dust on every surface—too gentle to shatter, too persistent to ignore.\n\nIt is the velvet pain of a memory half-recalled, a tune that skips just before the resolution, leaving the heart permanently poised on the edge of a sigh.\n\nThis soft sorrow is the truth that requires no drama, no shouting; merely a slow, knowing pressure behind the eyes, accepting the chill of an empty, beautiful room."
+  },
+  {
+    "id": 51,
+    "title": "Lunar Pull",
+    "author": "E. Ray",
+    "category": "Night",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1000&q=80",
+    "content": "It is not a choice, but a cosmic necessity—a tide within the blood that rushes always toward your shore, regardless of the sun's harsh command.\n\nLike the moon, you govern the waters of my spirit, dictating the rise and fall of my quiet yearning with an invisible, profound grace.\n\nI feel the pull across every mile and every shadow, a beautiful, relentless gravitation. We are two orbiting bodies, defined only by the perfect, inevitable distance that keeps us tethered in the dark."
+  },
+  {
+    "id": 52,
+    "title": "Uncharted",
+    "author": "Federico Mel",
+    "category": "Dreams",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=1000&q=80",
+    "content": "The maps we hold are relics of a sunlit cowardice, plotting only the dry, familiar paths that require no genuine courage to follow.\n\nBut the true wilderness lies where the known lines cease—in the crushing, silent depths of the sea, and in the sheer, unimaginable gulf between the galaxies.\n\nThis is the great freedom: the knowledge that the soul itself is an uncharted land, demanding an explorer who dares to abandon the compass and trust the cold, vast, and luminous dark."
+  },
+  {
+    "id": 53,
+    "title": "The Harvest of Happy Hours",
+    "author": "E. Ray",
+    "category": "Happy",
+    "rating": 4.3,
+    "ratingComments": [
+      "Beautifully raw and true."
+    ],
+    "image": "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&w=1000&q=80",
+    "content": "The memory is not a barren field, but a rich, cultivated land where every brief, genuine moment of joy has been planted and allowed to take deep, quiet root.\n\nToday's happiness is not fleeting, but a gathering; a slow, deliberate harvest of all those sun-warmed seconds and easy, unplanned smiles you once considered small.\n\nWe realize the truest wealth is this treasury of light, held close and perfectly preserved. The heart is full, not from a sudden storm of gold, but from the steady, nourishing abundance of a thousand good days gathered carefully one by one."
+  },
+  {
+    "id": 54,
+    "title": "I love you as certain dark things are to be loved, in secret, between the shadow",
+    "author": "Pablo Neruda",
+    "category": "Quotes",
+    "rating": 4.9,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=1000&q=80",
+    "content": "I love you as certain dark things are to be loved, in secret, between the shadow and the soul."
+  },
+  {
+    "id": 55,
+    "title": "Constant North",
+    "author": "C. Hope",
+    "category": "Love",
+    "rating": 4.3,
+    "ratingComments": [
+      "Haunting and unforgettable."
+    ],
+    "image": "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1000&q=80",
+    "content": "The world is a tempest of changing direction, a spinning compass where truth often feels like a passing suggestion, and true direction is lost in the fog of the day.\n\nBut the profound connection we share acts as a fixed point—a stellar certainty that pulls the trembling needle of my spirit back to its rightful, constant bearing, always pointing true.\n\nYou are the unwavering pole star in my sky. Knowing that your presence is the one thing that never shifts is the anchor and the navigation, granting the freedom to weather any storm without the fear of being utterly lost."
+  },
+  {
+    "id": 56,
+    "title": "Ode to the Quiet Ache",
+    "author": "E. Ray",
+    "category": "Melancholy",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+    "content": "It is not the sudden, shattering break, but the slow, continuous pressure—the subtle, constant reminder that something essential has been rearranged and can never fully return to its original form.\n\nThis quiet ache resides in the background, a low, perfect hum beneath the rush of the day, demanding nothing but occasional, soft recognition of its presence.\n\nIt is an old companion, a profound tutor teaching the spirit the quiet grace required to carry loss without falling. The ache is a sign not of failure, but of a great, enduring capacity to feel."
+  },
+  {
+    "id": 57,
+    "title": "Nocturne",
+    "author": "R. Nive",
+    "category": "Night",
+    "rating": 4.9,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1000&q=80",
+    "content": "Night folds over the city like a patient hand; it hushes the teeth of sound and teaches the tongue to listen.\n\nUnder the argent sky, the smallest truths reveal themselves as constellations in the chest.\n\nThe moon offers rumors of courage—if you sit very still, you might hear them spoken aloud."
+  },
+  {
+    "id": 58,
+    "title": "Dream-Eater",
+    "author": "E. Ray",
+    "category": "Dreams",
+    "rating": 4.2,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80",
+    "content": "There is a silent, cosmic vacuum that moves across the edges of the sleeping mind, a shape of perfect coldness that does not kill, but merely consumes the light.\n\nIt is the vast, uncaring nature of space given a hunger; drawing in the colors and sounds of your fragile night-worlds, leaving behind only the simple, untroubled gray of the dawn.\n\nFear it not, for the dream-eater is also the great cleanser, proving that even the most beautiful hallucinations must dissolve, and in the sheer emptiness, you are given room to begin anew."
+  },
+  {
+    "id": 59,
+    "title": "Laughter-Lines",
+    "author": "Federico Mel",
+    "category": "Happy",
+    "rating": 4.5,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1000&q=80",
+    "content": "The face is a vast, honest map of every journey taken, yet the truest cartography is not etched by worry, but by the relentless, sunny force of joy.\n\nLook closely at the corners of the eyes: these are the trenches of survival, yes, but they were dug not by sorrow, but by the sheer, overwhelming pressure of countless, uncontainable smiles.\n\nThese laughter-lines are the soul’s deepest testimony, proving that the most profound resilience is found in the ability to surrender to light, leaving behind indelible creases of happiness—the most beautiful wrinkles a life can earn."
+  },
+  {
+    "id": 60,
+    "title": "This above all: to thine own self be true.",
+    "author": "William Shakespeare",
+    "category": "Quotes",
+    "rating": 4.8,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
+    "content": "This above all: to thine own self be true."
+  },
+  {
+    "id": 61,
+    "title": "Your Name is My Favorite Syllable",
+    "author": "Federico Mel",
+    "category": "Love",
+    "rating": 4.1,
+    "ratingComments": [
+      "Pain and grace tangled in a single verse.",
+      "I read this and wanted to cry."
+    ],
+    "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=80",
+    "content": "The thousands of words I collect and carry are mostly noise—just the clumsy tools of the day used to measure time and distance and little else.\n\nBut then there is the rare, perfect combination of sound that is your name. It holds a power utterly separate from language, acting as a small, immediate incantation.\n\nIt is the one syllable that dissolves all logic, restoring every forgotten joy and every quiet promise. It is the simple, resonant truth that brings my whole sprawling universe back into focus."
+  },
+  {
+    "id": 62,
+    "title": "Fading Light",
+    "author": "L. Amara",
+    "category": "Melancholy",
+    "rating": 4.6,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
+    "content": "It is not the sudden descent into night, but the quiet, prolonged moment of transition—the last, fragile sliver of sun stretching across the floor, clinging stubbornly to the walls.\n\nThis light carries a heavy, specific kind of beauty; it is the grace found in acknowledging an inevitable loss, the dignity in watching a certainty slowly withdraw its warmth.\n\nDo not rush the final darkness. Stand quietly in the fading light and learn the lesson of resignation: that even when the source of brightness is gone, the memory of its color lingers, casting a deep, essential shadow of what was, and still is, loved."
+  },
+  {
+    "id": 63,
+    "title": "Owlish",
+    "author": "A. Noctis",
+    "category": "Night",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=1000&q=80",
+    "content": "The true work of endurance begins when the noise fades, requiring not the roar of the lion, but the silent, unblinking patience of the raptor on a high, black branch.\n\nTo be owlish is to understand that clarity is a nocturnal currency; the things that confuse us in the glare of day reveal their simple, fragile truths only when we learn to look through the deep dark.\n\nTrust the wisdom that waits in the stillness. Let your gaze be slow and immense, for you possess the quiet power to navigate the most overwhelming shadows and emerge with the necessary, sharp-eyed truth."
+  },
+  {
+    "id": 64,
+    "title": "Without music, life would be a mistake.",
+    "author": "Friedrich Nietzsche",
+    "category": "Quotes",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80",
+    "content": "Without music, life would be a mistake."
+  },
+  {
+    "id": 65,
+    "title": "Blood & Silk",
+    "author": "J. Vale",
+    "category": "Love",
+    "rating": 4.1,
+    "ratingComments": null,
+    "image": "https://picsum.photos/id/3/1200/800?auto=format&fit=crop&w=1200&q=80",
+    "content": "In the crucible of longing, hearts are shaped and remade. I remember the weight of your name as if it were a stone I carried in the dark.\n\nWe loved like fugitives: with urgency and confessions at midnight. The world outside could not see the architecture of our surrender.\n\nYet in the hollow moments I learn that love is not always rescue; sometimes it is a slow, exquisite unlearning of one's loneliness."
+  },
+  {
+    "id": 66,
+    "title": "Heavy Honey",
+    "author": "L. Vale",
+    "category": "Melancholy",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1496483648148-47c686dc86a8?auto=format&fit=crop&w=1000&q=80",
+    "content": "There are afternoons when silence itself tastes like sugar gone thick and dark—a concentration of every quiet grief I’ve ever swallowed whole.\n\nIt clings to the back of the throat, too sweet to be bitter, too much to be merely light. This dense, slow sadness is a feast I didn't ask for, yet cannot turn away from.\n\nThe heart, full to the brim, finds a peculiar comfort in its own exquisite burden. The sorrow settles, golden and amber, and I discover that the ache of being fully present is also a kind of strange, heavy honey."
+  },
+  {
+    "id": 67,
+    "title": "The Universe in a Midnight Hour",
+    "author": "E. Ray",
+    "category": "Night",
+    "rating": 4.1,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&w=1000&q=80",
+    "content": "The clock’s soft tick becomes the hammer of creation, measuring not minutes, but the vast, terrifying silence between the stars and my windowpane.\n\nIn this profound black velvet, the world collapses inward, and I find the cosmos reflected, not in a mirror, but in the echoing chamber of a single, open thought.\n\nEvery lost light years away is suddenly near; I am a witness and a grain of dust, understanding everything and nothing at all. The midnight hour is the only honest lens for such overwhelming and luminous scale."
+  },
+  {
+    "id": 68,
+    "title": "It does not matter how slowly you go as long as you do not stop.",
+    "author": "Confucius",
+    "category": "Quotes",
+    "rating": 4.4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80",
+    "content": "It does not matter how slowly you go as long as you do not stop."
+  },
+  {
+    "id": 69,
+    "title": "Your Laughter",
+    "author": "J. Vale",
+    "category": "Love",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80",
+    "content": "The mundane world is a heavy thing, often dull and leaden, full of difficult weights and shadows that threaten to absorb all light and possibility.\n\nBut then comes the sudden, bright cascade of your laughter—a pure, golden sound that acts as an immediate agent of change, transforming the very composition of the air.\n\nIn that single, uncontainable burst, every worry is instantly transmuted, turning the common elements of a difficult moment into something precious and enduring. It is the sound of life successfully turning despair into light."
+  },
+  {
+    "id": 70,
+    "title": "The Poetry in an Empty Chair",
+    "author": "L. Vale",
+    "category": "Melancholy",
+    "rating": 4.7,
+    "ratingComments": [
+      "I felt every line."
+    ],
+    "image": "https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=1000&q=80",
+    "content": "The silence in this space is not true stillness; it’s a profound, suspended chord—a memory held in the very fabric of the cushions and the slightly dented wood.\n\nAn empty chair is a monument to presence: it speaks eloquently of the weight once carried, the story once told, the laughter that used to define that precise geometry of air.\n\nIt is the clearest, most concise poem about loss. It demands nothing of you but the honesty of recognition, proving that the most resonant lessons of love are often written in the beautiful, unwavering outline of what is no longer there."
+  },
+  {
+    "id": 71,
+    "title": "Stillness",
+    "author": "J. Vale",
+    "category": "Night",
+    "rating": 4.4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1000&q=80",
+    "content": "The greatest passion is not the roaring fire, but the slow, deep breath taken when your chaos finally aligns with mine—a moment of profound, quiet synchronicity.\n\nHere, in the perfect stillness of your presence, the endless noise of the world outside is irrelevant; every question finds its answer in the space between our thoughts.\n\nThis is where love resides: not in the desperate pursuit, but in the perfect cessation of all movement, where two souls simply recognize their home and choose to rest."
+  },
+  {
+    "id": 72,
+    "title": "To be yourself in a world that is constantly trying to make you something else i",
+    "author": "Ralph Waldo Emerson",
+    "category": "Quotes",
+    "rating": 4.8,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1502786129293-79981df4e689?auto=format&fit=crop&w=1000&q=80",
+    "content": "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment."
+  },
+  {
+    "id": 73,
+    "title": "Inhale You",
+    "author": "A. Whisper",
+    "category": "Love",
+    "rating": 4.6,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1000&q=80",
+    "content": "The air between us is not empty space; it’s a charged field of recognition, a soft current carrying the unmistakable scent of belonging that only my own lungs truly understand.\n\nI close my eyes and draw a slow, deep, private breath, and in that simple act, I feel the whole architecture of your presence—the perfect, complex geography of your being—settle deep within my core.\n\nThis is the ultimate consumption of closeness: to take you in not as sight or sound, but as the essential oxygen of my survival. To exhale is to know I am utterly changed by the air I choose to breathe."
+  },
+  {
+    "id": 74,
+    "title": "Beautiful Ruin",
+    "author": "E. Ray",
+    "category": "Melancholy",
+    "rating": 5,
+    "ratingComments": [
+      "I felt every line.",
+      "A quiet masterpiece."
+    ],
+    "image": "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=1000&q=80",
+    "content": "The mind often demands seamlessness, a perfect, unblemished structure built to resist all the natural forces of time and tragedy. Yet, true character is etched into what survives the fall.\n\nThere is a fierce, quiet grace in the fractures—in the way the light catches the shattered edges, revealing a pattern of strength no polished surface could ever possess.\n\nThe ruin is not a failure, but a testament. You are a profound, essential landscape, proving that the deepest kind of beauty is found not in the impossible state of being unbroken, but in the resilient, complex, and utterly honest structure of what remains."
+  },
+  {
+    "id": 75,
+    "title": "The Nocturne of a Waking City",
+    "author": "R. Nyx",
+    "category": "Night",
+    "rating": 4.8,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1000&q=80",
+    "content": "Night folds over the city like a patient hand; it hushes the teeth of sound and teaches the tongue to listen.\n\nUnder the argent sky, the smallest truths reveal themselves as constellations in the chest.\n\nThe moon offers rumors of courage—if you sit very still, you might hear them spoken aloud. There is a small, stubborn light that refuses to be named, and in it we find our reasons to continue."
+  },
+  {
+    "id": 76,
+    "title": "Your children are not your children.",
+    "author": "Kahlil Gibran",
+    "category": "Quotes",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=1000&q=80",
+    "content": "Your children are not your children."
+  },
+  {
+    "id": 77,
+    "title": "Skin and Stars",
+    "author": "K. Solen",
+    "category": "Love",
+    "rating": 4.3,
+    "ratingComments": [
+      "I felt every line."
+    ],
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=80",
+    "content": "The greatest truth of the universe is not measured in light-years, but in the single, small space where two bodies finally rest—a frontier where the infinite meets the entirely human.\n\nYour skin is the nearest, warmest boundary of my known world, yet beneath it runs a current older than the seas, carrying the same stardust that patterns the darkest sky.\n\nHere, in the perfect quiet of our physical closeness, the two extremes merge: the fragile, fleeting miracle of the touchable self, and the profound, eternal comfort of the cosmos. We are simultaneously the smallest and the biggest things."
+  },
+  {
+    "id": 78,
+    "title": "Mourning Glow",
+    "author": "C. Hope",
+    "category": "Melancholy",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1000&q=80",
+    "content": "The light that breaks the pane is not a comfort, but a sharp reminder of the world’s indifference to the empty chair.\n\nIt catches the dust motes dancing, transforming absence into an unbearable, golden clarity. This is the moment I see the shape of loss most perfectly.\n\nYet, in that fragile sunrise, there is a stubborn promise: the wound may not close, but the spirit learns to carry its shadow with a certain, quiet dignity. It is a slow, cold kind of fire."
+  },
+  {
+    "id": 79,
+    "title": "Shadow-Love",
+    "author": "E. Ray",
+    "category": "Night",
+    "rating": 4.9,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1000&q=80",
+    "content": "It is the kind of love that lives best in the periphery, felt most keenly when the light is turned away and the world assumes its quieter, truer shape.\n\nNot a desperate craving, but a profound, resonant echo—the weight of your absence becoming the only measurable proof that you were ever truly there.\n\nI wear this dark devotion like a second skin, invisible to the sun, yet essential to the breath. A shadow-love is the purest kind, demanding only that I remember it with perfect, aching clarity."
+  },
+  {
+    "id": 80,
+    "title": "Some nights demand the company of one brave breath.",
+    "author": "R. Nyx",
+    "category": "Quotes",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=1000&q=80",
+    "content": "Some nights demand the company of one brave breath."
+  },
+  {
+    "id": 81,
+    "title": "A Grammar Built from Glances",
+    "author": "J. Vale",
+    "category": "Love",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80",
+    "content": "The spoken word is a clumsy vessel, often failing to carry the weight of a true, immediate connection. We rely on the tedious dictionary of the mouth, yet the real dialogue occurs in absolute silence.\n\nThere exists a private grammar known only by two—a language constructed entirely of subtle shifts in the eye, the slight tilt of the head, the momentary pause in breathing.\n\nEvery glance is a clause, a whole perfect sentence understood without effort. This is the ultimate syntax of intimacy: a continuous, perfect conversation requiring no sound, only the shared, brilliant clarity of seeing and being seen."
+  },
+  {
+    "id": 82,
+    "title": "The Geology of a Heavy Heart",
+    "author": "M. Solara",
+    "category": "Melancholy",
+    "rating": 4.1,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1483794344563-d27a8d18014e?auto=format&fit=crop&w=1000&q=80",
+    "content": "It is not merely a metaphor; it is a physical, demanding weight—a dense, unmoving stone placed deep behind the ribs that challenges the very act of standing upright.\n\nEvery small choice requires immense effort, as if the spirit must constantly fight against an unnatural gravity pulling it down into the stillness of the floor.\n\nBut the weight is proof of the love it contained. Carry it with the quiet dignity of a person who understands that the heart becomes heavy only after it has held something truly vast and precious that it was unable to keep."
+  },
+  {
+    "id": 83,
+    "title": "Dark Embrace",
+    "author": "A. Whisper",
+    "category": "Night",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1000&q=80",
+    "content": "The sky wraps itself around the edges of the world, a cloak of infinite, comforting black that asks nothing of you but stillness and ease.\n\nIt is the oldest form of sanctuary, where the sharp lines of worry dissolve, and every frantic thought is muffled in the soft, ancient quiet.\n\nHere, beneath the unblinking, distant eyes of the stars, the heart can finally rest its heavy armor and simply belong to the shadow, held safe within the dark's profound and velvet embrace."
+  },
+  {
+    "id": 84,
+    "title": "You have power over your mind — not outside events.",
+    "author": "Marcus Aurelius",
+    "category": "Quotes",
+    "rating": 4.3,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
+    "content": "You have power over your mind — not outside events."
+  },
+  {
+    "id": 85,
+    "title": "Life is either a daring adventure or nothing at all.",
+    "author": "Helen Keller",
+    "category": "Quotes",
+    "rating": 4.4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80",
+    "content": "Life is either a daring adventure or nothing at all."
+  },
+  {
+    "id": 86,
+    "title": "Courage is the small act of waking when the world sleeps.",
+    "author": "L. Amara",
+    "category": "Quotes",
+    "rating": 4.7,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1000&q=80",
+    "content": "Courage is the small act of waking when the world sleeps."
+  },
+  {
+    "id": 87,
+    "title": "We trade our todays for the promise of a better never.",
+    "author": "Federico Mel",
+    "category": "Quotes",
+    "rating": 4.4,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80",
+    "content": "We trade our todays for the promise of a better never."
+  },
+  {
+    "id": 88,
+    "title": "Silence is a language that speaks in hollow rooms.",
+    "author": "A. Whisper",
+    "category": "Quotes",
+    "rating": 4.5,
+    "ratingComments": null,
+    "image": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80",
+    "content": "Silence is a language that speaks in hollow rooms."
+  }
+]
