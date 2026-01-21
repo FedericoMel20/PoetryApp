@@ -1,43 +1,53 @@
+// src/api/poems.ts
 import Constants from "expo-constants";
 
-const getBaseURL = (): string => {
-  const LOCAL_PC_IP = "192.168.100.14"; 
-  const PORT = 3000;
+// 🔗 Backend base URL
+// Prefer ENV (production), fallback to local dev
+const BASE_URL =
+  Constants.expoConfig?.extra?.API_URL ||
+  "https://izvuglczheogdmnrcauy.supabase.co/"; // ⬅️ change later if needed
 
-  try {
-    const debuggerHost = Constants.expoConfig?.hostUri || Constants.manifest?.debuggerHost;
-    if (debuggerHost) {
-      const host = debuggerHost.split(":")[0];
-      console.log("📡 Expo detected host:", host);
-      return `http://${host}:${PORT}`;
-    }
-  } catch (err) {
-    console.warn("Expo Constants not available, using fallback IP");
-  }
-
-  // Fallback: PC IP for physical device, 10.0.2.2 for Android emulator
-  if (Constants.platform?.android) {
-    console.log(" Running on Android, using PC IP (physical device likely)");
-    return `http://${LOCAL_PC_IP}:${PORT}`;
-  }
-
-  console.log(" Using fallback localhost");
-  return `http://localhost:${PORT}`;
-};
-
-const BASE_URL = getBaseURL();
-
+// 📥 GET all poems
 export const getPoems = async () => {
   try {
-    console.log("Fetching from:", `${BASE_URL}/api/poems`);
+    console.log("📡 Fetching poems from:", `${BASE_URL}/api/poems`);
+
     const response = await fetch(`${BASE_URL}/api/poems`);
-    if (!response.ok) throw new Error("Network response was not ok");
-    const data = await response.json();
-    return data;
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    return await response.json();
   } catch (error) {
-    console.error("Error fetching poems:", error);
+    console.error("❌ Error fetching poems:", error);
     return [];
   }
 };
 
-export default getBaseURL;
+// ➕ POST new poem
+export const addPoem = async (poem: {
+  title: string;
+  content: string;
+  author?: string;
+  category?: string;
+  image?: string;
+}) => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/poems`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(poem),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to add poem (${response.status})`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("❌ Error adding poem:", error);
+    throw error;
+  }
+};
