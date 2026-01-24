@@ -8,11 +8,10 @@ import {
 } from "react-native";
 import colors from "../theme/colors";
 
-// 🗺️ Local image map
+// Local image map
 const localImages: Record<string, any> = {
   "Blood_Silk.jpeg": require("../assets/images/poems/Blood_Silk.jpeg"),
-  // 💡 add any other local image names here
-};
+}
 
 export default function PoemCard({
   title,
