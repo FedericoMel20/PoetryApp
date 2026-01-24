@@ -1,26 +1,18 @@
-Of course, Federico — here’s a **refined, professional version** of your README explanation.
-It’s smoother, structured, and reads like a mature portfolio piece — still expressive, but now concise and polished enough for GitHub or even a presentation.
-
----
 
 # Loud Whispers
-
-### *“The wandering prints of a strange pen.”*
-
-## Overview
+ *“The wandering prints of a strange pen.”*
+ Overview
 
 **Loud Whispers** is a mobile poetry application designed to merge art, emotion, and technology into a seamless reading experience. It serves as a digital space where users can explore, reflect, and connect with poetic expressions through a visually immersive interface.
 
 The project was inspired by the idea that poetry doesn’t need to be loud to be powerful—it simply needs to resonate. The app captures that essence through its calm, night-themed design, emphasizing subtle beauty and emotional depth.
 
----
 
 ## Inspiration
 
 The concept behind *Loud Whispers* stems from the quiet strength of emotion. I wanted to create a platform that feels personal and contemplative—a place where words breathe and design speaks softly.
 The name “Loud Whispers” reflects the idea that even gentle expressions can leave lasting echoes. The project was built not only as a technical challenge but also as a creative outlet—a blend of coding, aesthetics, and introspection.
 
----
 
 ## Features
 
@@ -49,8 +41,6 @@ The home interface introduces the app with an elegant banner, a randomly selecte
 
 A section reserved for future personalization features, such as user profiles, settings, and personal poem submissions.
 
----
-
 ## Design and Aesthetics
 
 The visual identity of *Loud Whispers* is inspired by the serenity of the night—calm, mysterious, and introspective.
@@ -61,8 +51,6 @@ The visual identity of *Loud Whispers* is inspired by the serenity of the night�
 * **Interface:** Balanced spacing and contrast for readability and mood consistency
 
 The goal was to make every screen feel intentional and poetic—where the design supports the atmosphere of the content rather than distracting from it.
-
----
 
 ## Technical Overview
 
@@ -83,8 +71,6 @@ The project is built with **React Native (Expo)** and uses **TypeScript** for ma
 * Local storage for favorites
 * Modular stack navigation for each main section
 * Reusable UI components such as `PoemCard`
-
----
 
 ## Project Structure
 
@@ -121,8 +107,6 @@ src/
 ```
 
 This structure ensures modularity, clarity, and scalability, allowing each feature or screen to evolve independently.
-
----
 
 ## Purpose and Impact
 
