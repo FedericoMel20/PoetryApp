@@ -2,6 +2,8 @@ import { useCachedResources } from '@/hooks/useCachedResources';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
+import { AuthProvider } from "../src/context/AuthContext";
+
 
 
 import RootNavigator from '@/navigation/RootNavigator';
@@ -25,9 +27,10 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      {/* Use the stack that wraps the tab navigator */}
+  <NavigationContainer>
+    <AuthProvider>
       <RootNavigator />
-    </NavigationContainer>
+    </AuthProvider>
+  </NavigationContainer>
   );
 }

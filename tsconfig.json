@@ -4,14 +4,30 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@screens/*": ["src/screens/*"],
-      "@navigation/*": ["src/navigation/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@theme/*": ["src/theme/*"],
-      "@assets/*": ["src/assets/*"],
-      "@api/*": ["src/api/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@screens/*": [
+        "src/screens/*"
+      ],
+      "@navigation/*": [
+        "src/navigation/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@theme/*": [
+        "src/theme/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@api/*": [
+        "src/api/*"
+      ]
     }
   },
   "include": [

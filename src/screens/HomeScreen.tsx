@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import Constants from "expo-constants";
 import React, { useEffect, useState } from "react";
 import {
   Animated,
@@ -15,6 +16,9 @@ import {
 import { getPoems } from "../api/poems";
 import PoemCard from "../components/PoemCard";
 import { HomeStackParamList } from "../navigation/HomeStackNavigator"; // ✅ import the stack types
+
+console.log("EXPO EXTRA:", Constants.expoConfig?.extra);
+
 
 const { width } = Dimensions.get("window");
 

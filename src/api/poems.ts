@@ -1,16 +1,15 @@
 // src/api/poems.ts
 import Constants from "expo-constants";
 
-// 🔗 Backend base URL
-// Prefer ENV (production), fallback to local dev
+
 const BASE_URL =
   Constants.expoConfig?.extra?.API_URL ||
-  "https://izvuglczheogdmnrcauy.supabase.co/"; // ⬅️ change later if needed
+  "https://poetryapp-production.up.railway.app";
 
-// 📥 GET all poems
+// GET all poems
 export const getPoems = async () => {
   try {
-    console.log("📡 Fetching poems from:", `${BASE_URL}/api/poems`);
+    console.log("Fetching poems from:", `${BASE_URL}/api/poems`);
 
     const response = await fetch(`${BASE_URL}/api/poems`);
     if (!response.ok) {
