@@ -1,5 +1,6 @@
 // src/api/poems.ts
 import Constants from "expo-constants";
+import { supabase } from "../config/supabase";
 
 
 const BASE_URL =
@@ -12,6 +13,7 @@ export const getPoems = async () => {
     console.log("Fetching poems from:", `${BASE_URL}/api/poems`);
 
     const response = await fetch(`${BASE_URL}/api/poems`);
+
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -19,7 +21,7 @@ export const getPoems = async () => {
     return await response.json();
   } catch (error) {
     console.error("❌ Error fetching poems:", error);
-    return [];
+    throw error;
   }
 };
 
@@ -27,26 +29,30 @@ export const getPoems = async () => {
 export const addPoem = async (poem: {
   title: string;
   content: string;
-  author?: string;
   category?: string;
   image?: string;
 }) => {
-  try {
-    const response = await fetch(`${BASE_URL}/api/poems`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(poem),
-    });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-    if (!response.ok) {
-      throw new Error(`Failed to add poem (${response.status})`);
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error("❌ Error adding poem:", error);
-    throw error;
+  if (!session?.access_token) {
+    throw new Error("User not authenticated");
   }
+
+  const response = await fetch(`${BASE_URL}/api/poems`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${session.access_token}`,
+    },
+    body: JSON.stringify(poem),
+  });
+
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(err);
+  }
+
+  return response.json();
 };

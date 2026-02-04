@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { getPoems } from "../api/poems";
+import { addPoem, getPoems } from "../api/poems";
 import colors from "../theme/colors";
 import { RootStackParamList } from "../types/navigation";
 
@@ -43,6 +43,22 @@ export default function DiscoverScreen() {
     }
     fetchPoems();
   }, []);
+
+  const testCreatePoem = async () => {
+    try {
+      const poem = await addPoem({
+        title: "Sanity Check Poem",
+        content: "If you see this in Supabase with an author_id, we won.",
+        category: "Test",
+      });
+
+      console.log("✅ Poem created:", poem);
+      alert("Poem created successfully!");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to create poem");
+    }
+  };
 
   const filtered =
     selectedCategory === "All"
@@ -121,6 +137,22 @@ export default function DiscoverScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }}
       />
+
+      <TouchableOpacity
+        style={{
+          position: "absolute",
+          bottom: 24,
+          right: 20,
+          backgroundColor: "#FFD700",
+          padding: 12,
+          borderRadius: 10,
+          marginVertical: 10,
+          zIndex: 20,
+        }}
+        onPress={testCreatePoem}
+      >
+        <Text style={{ fontWeight: "bold", color: "#000" }}>+ Create Test Poem</Text>
+      </TouchableOpacity>
     </View>
   );
 }

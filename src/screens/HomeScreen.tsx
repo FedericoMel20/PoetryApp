@@ -15,7 +15,9 @@ import {
 } from "react-native";
 import { getPoems } from "../api/poems";
 import PoemCard from "../components/PoemCard";
-import { HomeStackParamList } from "../navigation/HomeStackNavigator"; // ✅ import the stack types
+import { useAuth } from "../context/AuthContext";
+import { HomeStackParamList } from "../navigation/HomeStackNavigator";
+
 
 console.log("EXPO EXTRA:", Constants.expoConfig?.extra);
 
@@ -24,10 +26,16 @@ const { width } = Dimensions.get("window");
 
 export default function HomeScreen() {
   const [poems, setPoems] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [poemsLoading, setPoemsLoading] = useState(true);
   const [quote, setQuote] = useState<any>(null);
 
   const scrollY = new Animated.Value(0);
+
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    console.log("🔐 AUTH STATE:", { loading, user });
+  }, [loading, user]);
 
   
   const navigation =
@@ -43,7 +51,7 @@ export default function HomeScreen() {
       } catch (err) {
         console.error("Error fetching poems:", err);
       } finally {
-        setLoading(false);
+        setPoemsLoading(false);
       }
     }
 
@@ -58,7 +66,7 @@ export default function HomeScreen() {
     extrapolate: "clamp",
   });
 
-  if (loading) {
+  if (poemsLoading) {
     return (
       <View style={styles.loader}>
         <Text style={{ color: "#C49BFF" }}>Loading whispers...</Text>

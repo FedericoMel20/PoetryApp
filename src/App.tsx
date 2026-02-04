@@ -2,11 +2,26 @@ import { useCachedResources } from '@/hooks/useCachedResources';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { AuthProvider } from "../src/context/AuthContext";
+import { AuthProvider, useAuth } from "../src/context/AuthContext";
+import AuthScreen from "../src/screens/AuthScreen";
 
 
 
 import RootNavigator from '@/navigation/RootNavigator';
+
+function AppContent() {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
+  return user ? <RootNavigator /> : <AuthScreen />;
+}
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -27,10 +42,10 @@ export default function App() {
   }
 
   return (
-  <NavigationContainer>
     <AuthProvider>
-      <RootNavigator />
+      <NavigationContainer>
+        <AppContent />
+      </NavigationContainer>
     </AuthProvider>
-  </NavigationContainer>
   );
 }
