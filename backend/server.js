@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 const dataPath = path.resolve(__dirname, "../src/data/poemsData.json");
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 // Root route (optional)
 app.get("/", (req, res) => {
-  res.send("📖 Poetry API is running...");
+  res.send(" Poetry API is running...");
 });
 
 
@@ -33,4 +33,4 @@ app.get("/api/poems", (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+app.listen(PORT, "0.0.0.0", () => console.log(`🚀 Server running on port ${PORT}`));
