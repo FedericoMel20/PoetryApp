@@ -3,13 +3,13 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useContext, useEffect, useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    FlatList,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { deletePoem, getPoemsByAuthor } from "../api/poems";
 import PoemCard from "../components/PoemCard";
@@ -115,6 +115,20 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', marginBottom: 12, justifyContent: 'space-between' },
   actions: { flexDirection: 'row', marginLeft: 12 },
   actionBtn: { padding: 8, marginLeft: 8, borderRadius: 8, backgroundColor: 'rgba(255,255,255,0.03)' },
-  fab: { position: 'absolute', right: 20, bottom: 30, width: 60, height: 60, borderRadius: 30, backgroundColor: '#FFD700', alignItems: 'center', justifyContent: 'center', elevation: 6 },
+  fab: {
+    position: "absolute",
+    right: 24,
+    bottom: 30,
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: "#C49BFF",
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#C49BFF",
+    shadowOpacity: 0.7,
+    shadowRadius: 12,
+    elevation: 10,
+  },
   loader: { flex: 1, justifyContent: 'center', alignItems: 'center' },
 });

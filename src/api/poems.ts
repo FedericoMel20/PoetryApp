@@ -77,21 +77,26 @@ export const addPoem = async (poem: {
 };
 
 export const deletePoem = async (id: number) => {
-  const { data } = await supabase.auth.getSession();
-  const session = data.session;
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (!session?.access_token) {
+  const token = session?.access_token;
+
+  if (!token) {
     throw new Error("Not authenticated");
   }
 
-  const response = await fetch(`${BASE_URL}/api/poems/${id}`, {
+  const res = await fetch(`${BASE_URL}/api/poems/${id}`, {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer ${session.access_token}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 
-  if (!response.ok) {
+  if (!res.ok) {
+    const text = await res.text().catch(() => null);
+    console.error("Delete error:", text);
     throw new Error("Failed to delete poem");
   }
 
@@ -99,26 +104,27 @@ export const deletePoem = async (id: number) => {
 };
 
 export const updatePoem = async (id: number, payload: { title?: string; content?: string; category?: string; image?: string }) => {
-  const { data } = await supabase.auth.getSession();
-  const session = data.session;
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (!session?.access_token) {
-    throw new Error("Not authenticated");
-  }
+  const token = session?.access_token;
 
-  const response = await fetch(`${BASE_URL}/api/poems/${id}`, {
+  if (!token) throw new Error("Not authenticated");
+
+  const res = await fetch(`${BASE_URL}/api/poems/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${session.access_token}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(payload),
   });
 
-  if (!response.ok) {
-    const text = await response.text().catch(() => null);
+  if (!res.ok) {
+    const text = await res.text().catch(() => null);
     throw new Error(text || "Failed to update poem");
   }
 
-  return response.json();
+  return res.json();
 };
