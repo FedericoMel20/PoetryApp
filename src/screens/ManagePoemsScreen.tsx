@@ -88,7 +88,12 @@ export default function ManagePoemsScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Manage Your Poems</Text>
+      <View style={styles.headerRow}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+          <Ionicons name="chevron-back" size={22} color={colors.accent} />
+        </TouchableOpacity>
+        <Text style={styles.header}>Manage Your Poems</Text>
+      </View>
 
       {poems.length === 0 ? (
         <Text style={styles.empty}>You haven't published any poems yet.</Text>
@@ -110,7 +115,9 @@ export default function ManagePoemsScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.background, padding: 16 },
-  header: { color: colors.accent, fontSize: 18, fontWeight: '700', marginBottom: 12 },
+  headerRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 12 },
+  backBtn: { padding: 6, marginRight: 8 },
+  header: { color: colors.accent, fontSize: 18, fontWeight: '700' },
   empty: { color: '#AAA', fontStyle: 'italic' },
   row: { flexDirection: 'row', alignItems: 'center', marginBottom: 12, justifyContent: 'space-between' },
   actions: { flexDirection: 'row', marginLeft: 12 },

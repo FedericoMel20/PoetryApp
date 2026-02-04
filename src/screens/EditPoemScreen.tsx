@@ -1,5 +1,6 @@
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { updatePoem } from "../api/poems";
 
 export default function EditPoemScreen({ route, navigation }: any) {
@@ -31,6 +32,12 @@ export default function EditPoemScreen({ route, navigation }: any) {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <View style={styles.headerRow}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+          <Ionicons name="chevron-back" size={22} color="#C49BFF" />
+        </TouchableOpacity>
+        <Text style={styles.editTitle}>Edit Poem</Text>
+      </View>
       <Text style={styles.label}>Title</Text>
       <TextInput style={styles.input} value={title} onChangeText={setTitle} />
 
@@ -52,6 +59,9 @@ export default function EditPoemScreen({ route, navigation }: any) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#0B0018', padding: 20 },
+  headerRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 12 },
+  backBtn: { padding: 6, marginRight: 8 },
+  editTitle: { color: '#C49BFF', fontSize: 18, fontWeight: '700' },
   label: { color: '#C49BFF', fontSize: 14, marginTop: 16 },
   input: { backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: 12, padding: 12, color: '#EDE6FF', borderWidth: 1, borderColor: 'rgba(196,155,255,0.4)', marginTop: 8 },
   textArea: { height: 160, textAlignVertical: 'top' },

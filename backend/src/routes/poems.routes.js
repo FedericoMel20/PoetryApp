@@ -131,8 +131,15 @@ router.delete("/:id", async (req, res) => {
     supabase.auth.setAuth(token);
 
     const { id } = req.params;
+    console.log("🗑️ DELETE poem id:", id);
 
-    const { error } = await supabase.from("poems").delete().eq("id", id).eq("author_id", user.id);
+    const poemId = Number(id);
+
+    if (!poemId) {
+      return res.status(400).json({ error: "Invalid poem id" });
+    }
+
+    const { error } = await supabase.from("poems").delete().eq("id", poemId).eq("author_id", user.id);
 
     if (error) throw error;
 
