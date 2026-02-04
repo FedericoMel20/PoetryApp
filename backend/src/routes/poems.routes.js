@@ -107,45 +107,35 @@ router.post("/", async (req, res) => {
   }
 });
 
-export default router;
-
-// DELETE poem (owner only)
+// DELETE poem
 router.delete("/:id", async (req, res) => {
+  const poemId = Number(req.params.id);
+
+  console.log("🗑️ Request to delete poem:", poemId);
+
+  if (!poemId) {
+    return res.status(400).json({ error: "Invalid poem id" });
+  }
+
   try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader) {
-      return res.status(401).json({ error: "Unauthorized" });
+    const { data, error } = await supabase
+      .from("poems")
+      .delete()
+      .eq("id", poemId)
+      .select();
+
+    if (error) {
+      console.error("❌ Supabase delete error:", error);
+      return res.status(500).json({ error: error.message });
     }
 
-    const token = authHeader.replace("Bearer ", "");
-
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser(token);
-
-    if (authError || !user) {
-      return res.status(401).json({ error: "Unauthorized" });
+    if (!data || data.length === 0) {
+      return res.status(404).json({ error: "Poem not found" });
     }
 
-    supabase.auth.setAuth(token);
-
-    const { id } = req.params;
-    console.log("🗑️ DELETE poem id:", id);
-
-    const poemId = Number(id);
-
-    if (!poemId) {
-      return res.status(400).json({ error: "Invalid poem id" });
-    }
-
-    const { error } = await supabase.from("poems").delete().eq("id", poemId).eq("author_id", user.id);
-
-    if (error) throw error;
-
-    res.json({ success: true });
+    res.json({ success: true, deleted: data[0] });
   } catch (err) {
-    console.error("Delete poem error:", err);
+    console.error("❌ Delete crash:", err);
     res.status(500).json({ error: "Failed to delete poem" });
   }
 });
@@ -163,9 +153,6 @@ router.put("/:id", async (req, res) => {
     } = await supabase.auth.getUser(token);
 
     if (authError || !user) return res.status(401).json({ error: "Unauthorized" });
-
-    supabase.auth.setAuth(token);
-
     const { id } = req.params;
     const { title, content, category, image } = req.body;
 
@@ -185,3 +172,5 @@ router.put("/:id", async (req, res) => {
     res.status(500).json({ error: "Failed to update poem" });
   }
 });
+
+export default router;
