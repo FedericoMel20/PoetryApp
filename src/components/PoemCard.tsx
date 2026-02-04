@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    ImageBackground,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import colors from "../theme/colors";
 
@@ -17,10 +17,12 @@ export default function PoemCard({
   title,
   author,
   image,
+  onPress,
 }: {
   title: string;
   author: string;
   image: any;
+  onPress?: () => void;
 }) {
   
   const imageSource =
@@ -29,7 +31,7 @@ export default function PoemCard({
       : image;
 
   return (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.85}>
       <ImageBackground
         source={imageSource}
         style={styles.image}

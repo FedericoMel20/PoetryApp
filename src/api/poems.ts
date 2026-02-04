@@ -75,3 +75,50 @@ export const addPoem = async (poem: {
 
   return response.json();
 };
+
+export const deletePoem = async (id: number) => {
+  const { data } = await supabase.auth.getSession();
+  const session = data.session;
+
+  if (!session?.access_token) {
+    throw new Error("Not authenticated");
+  }
+
+  const response = await fetch(`${BASE_URL}/api/poems/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${session.access_token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete poem");
+  }
+
+  return true;
+};
+
+export const updatePoem = async (id: number, payload: { title?: string; content?: string; category?: string; image?: string }) => {
+  const { data } = await supabase.auth.getSession();
+  const session = data.session;
+
+  if (!session?.access_token) {
+    throw new Error("Not authenticated");
+  }
+
+  const response = await fetch(`${BASE_URL}/api/poems/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${session.access_token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const text = await response.text().catch(() => null);
+    throw new Error(text || "Failed to update poem");
+  }
+
+  return response.json();
+};

@@ -4,7 +4,7 @@ import React from 'react';
 import { Animated, Platform, StyleSheet, Text } from 'react-native';
 import DiscoverStackNavigator from '../navigation/DiscoverStackNavigator';
 import HomeStackNavigator from "../navigation/HomeStackNavigator";
-import ProfileScreen from '../screens/ProfileScreen';
+import ProfileStackNavigator from '../navigation/ProfileStackNavigator';
 import colors from '../theme/colors';
 import FavoritesStackNavigator from "./FavoritesStackNavigator";
 
@@ -139,7 +139,7 @@ export default function BottomTabNavigator() {
       <Tab.Screen name="Home" component={HomeStackNavigator} />
       <Tab.Screen name="Discover" component={DiscoverStackNavigator} />
       <Tab.Screen name="Bookmarks" component={FavoritesStackNavigator} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Profile" component={ProfileStackNavigator} />
     </Tab.Navigator>
   );
 }

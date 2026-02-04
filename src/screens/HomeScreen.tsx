@@ -153,16 +153,12 @@ export default function HomeScreen() {
           horizontal
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity
-              activeOpacity={0.85}
-              onPress={() => navigation.navigate("PoemDetail", { poem: item })} // ✅ Navigation works here
-            >
               <PoemCard
                 title={item.title}
                 author={item.author}
                 image={{ uri: item.image }}
+                onPress={() => navigation.navigate("PoemDetail", { poem: item })}
               />
-            </TouchableOpacity>
           )}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingRight: 15 }}

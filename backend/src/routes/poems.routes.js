@@ -108,3 +108,73 @@ router.post("/", async (req, res) => {
 });
 
 export default router;
+
+// DELETE poem (owner only)
+router.delete("/:id", async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    const token = authHeader.replace("Bearer ", "");
+
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser(token);
+
+    if (authError || !user) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    supabase.auth.setAuth(token);
+
+    const { id } = req.params;
+
+    const { error } = await supabase.from("poems").delete().eq("id", id).eq("author_id", user.id);
+
+    if (error) throw error;
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Delete poem error:", err);
+    res.status(500).json({ error: "Failed to delete poem" });
+  }
+});
+
+// UPDATE poem (owner only)
+router.put("/:id", async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) return res.status(401).json({ error: "Unauthorized" });
+
+    const token = authHeader.replace("Bearer ", "");
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser(token);
+
+    if (authError || !user) return res.status(401).json({ error: "Unauthorized" });
+
+    supabase.auth.setAuth(token);
+
+    const { id } = req.params;
+    const { title, content, category, image } = req.body;
+
+    const { data, error } = await supabase
+      .from("poems")
+      .update({ title, content, category, image })
+      .eq("id", id)
+      .eq("author_id", user.id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    res.json(data);
+  } catch (err) {
+    console.error("Update poem error:", err);
+    res.status(500).json({ error: "Failed to update poem" });
+  }
+});

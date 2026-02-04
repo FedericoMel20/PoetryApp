@@ -1,37 +1,38 @@
 // src/screens/ProfileScreen.tsx
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useContext, useEffect, useState } from "react";
 import {
   FlatList,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { getPoemsByAuthor } from "../api/poems";
 import PoemCard from "../components/PoemCard";
 import { AuthContext } from "../context/AuthContext";
+import { ProfileStackParamList } from "../navigation/ProfileStackNavigator";
 import colors from "../theme/colors";
 
 export default function ProfileScreen() {
   const auth = useContext(AuthContext);
+  const navigation = useNavigation<NativeStackNavigationProp<ProfileStackParamList>>();
 
-  if (!auth) {
-    return null;
-  }
+  if (!auth) return null;
 
   const { user, signOut } = auth;
 
   const username =
-    user?.user_metadata?.username ||
-    user?.email?.split("@")[0] ||
-    "Verse_Weaver";
+    user?.user_metadata?.username || user?.email?.split("@")[0] || "Verse_Weaver";
 
   const [myPoems, setMyPoems] = useState<any[]>([]);
   const [loadingPoems, setLoadingPoems] = useState(true);
 
   useEffect(() => {
     let mounted = true;
+
     async function fetchMyPoems() {
       if (!user?.id) return setLoadingPoems(false);
 
@@ -52,6 +53,8 @@ export default function ProfileScreen() {
       mounted = false;
     };
   }, [user]);
+
+  // Profile screen no longer exposes edit/delete — ManagePoems handles that.
 
   return (
     <View style={styles.container}>
@@ -86,24 +89,26 @@ export default function ProfileScreen() {
         {loadingPoems ? (
           <Text style={styles.emptyText}>Loading your poems…</Text>
         ) : myPoems.length === 0 ? (
-          <Text style={styles.emptyText}>You haven’t written any poems yet.</Text>
+          <Text style={styles.emptyText}>You haven't written any poems yet.</Text>
         ) : (
           <FlatList
             data={myPoems}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <PoemCard
-                title={item.title}
-                author={item.author || "Anonymous"}
-                image={item.image}
-              />
-            )}
             horizontal
             showsHorizontalScrollIndicator={false}
+            keyExtractor={(item: any) => String(item.id || item._id || item.title)}
+            renderItem={({ item }) => (
+              <PoemCard
+                title={item.title || "Untitled"}
+                author={username}
+                image={item.image || null}
+                onPress={() => navigation.navigate("PoemDetail", { poem: item })}
+              />
+            )}
+            contentContainerStyle={{ paddingVertical: 6 }}
           />
         )}
 
-        <TouchableOpacity style={styles.manageBtn}>
+        <TouchableOpacity style={styles.manageBtn} onPress={() => navigation.navigate("ManagePoems")}>
           <Ionicons name="add-circle" size={18} color="#FFD700" />
           <Text style={styles.manageText}>Manage All Poems</Text>
         </TouchableOpacity>
@@ -195,38 +200,6 @@ const styles = StyleSheet.create({
   emptyText: {
     color: "#888",
     fontStyle: "italic",
-  },
-  poemCard: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "rgba(255,255,255,0.04)",
-    padding: 10,
-    borderRadius: 12,
-    marginBottom: 10,
-  },
-  poemImage: {
-    width: 48,
-    height: 48,
-    borderRadius: 8,
-    marginRight: 10,
-  },
-  poemTitle: {
-    color: "#EDE6FF",
-    fontWeight: "600",
-  },
-  poemMeta: {
-    color: "#AAA",
-    fontSize: 12,
-  },
-  editBtn: {
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 15,
-    backgroundColor: "rgba(196,155,255,0.2)",
-  },
-  editText: {
-    color: "#C49BFF",
-    fontSize: 12,
   },
   manageBtn: {
     flexDirection: "row",
