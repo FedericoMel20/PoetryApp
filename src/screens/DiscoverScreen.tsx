@@ -12,9 +12,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { addPoem, getPoems } from "../api/poems";
+import { getPoems } from "../api/poems";
+import { DiscoverStackParamList } from "../navigation/DiscoverStackNavigator";
 import colors from "../theme/colors";
-import { RootStackParamList } from "../types/navigation";
 
 // Category options
 const categories = [
@@ -33,7 +33,7 @@ export default function DiscoverScreen() {
   const [poems, setPoems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NativeStackNavigationProp<DiscoverStackParamList>>();
 
   useEffect(() => {
     async function fetchPoems() {
@@ -44,21 +44,7 @@ export default function DiscoverScreen() {
     fetchPoems();
   }, []);
 
-  const testCreatePoem = async () => {
-    try {
-      const poem = await addPoem({
-        title: "Sanity Check Poem",
-        content: "If you see this in Supabase with an author_id, we won.",
-        category: "Test",
-      });
-
-      console.log("✅ Poem created:", poem);
-      alert("Poem created successfully!");
-    } catch (err) {
-      console.error(err);
-      alert("Failed to create poem");
-    }
-  };
+  
 
   const filtered =
     selectedCategory === "All"
@@ -138,20 +124,14 @@ export default function DiscoverScreen() {
         contentContainerStyle={{ paddingBottom: 100 }}
       />
 
+      
+
       <TouchableOpacity
-        style={{
-          position: "absolute",
-          bottom: 24,
-          right: 20,
-          backgroundColor: "#FFD700",
-          padding: 12,
-          borderRadius: 10,
-          marginVertical: 10,
-          zIndex: 20,
-        }}
-        onPress={testCreatePoem}
+        style={styles.fab}
+        activeOpacity={0.85}
+        onPress={() => navigation.navigate("CreatePoem")}
       >
-        <Text style={{ fontWeight: "bold", color: "#000" }}>+ Create Test Poem</Text>
+        <Ionicons name="add" size={30} color="#0B0018" />
       </TouchableOpacity>
     </View>
   );
@@ -241,5 +221,20 @@ const styles = StyleSheet.create({
     color: colors.text,
     marginLeft: 4,
     fontSize: 12,
+  },
+  fab: {
+    position: "absolute",
+    bottom: 30,
+    right: 25,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: "#C49BFF",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#C49BFF",
+    shadowOpacity: 0.6,
+    shadowRadius: 12,
+    elevation: 8,
   },
 });

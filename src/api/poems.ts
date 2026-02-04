@@ -25,6 +25,25 @@ export const getPoems = async () => {
   }
 };
 
+// GET poems by author id
+export const getPoemsByAuthor = async (authorId: string) => {
+  try {
+    const url = `${BASE_URL}/api/poems?author_id=${encodeURIComponent(authorId)}`;
+    console.log("Fetching poems for author:", url);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("❌ Error fetching author's poems:", error);
+    throw error;
+  }
+};
+
 // ➕ POST new poem
 export const addPoem = async (poem: {
   title: string;
@@ -32,11 +51,11 @@ export const addPoem = async (poem: {
   category?: string;
   image?: string;
 }) => {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const { data } = await supabase.auth.getSession();
 
-  if (!session?.access_token) {
+  const session = data.session;
+
+  if (!session) {
     throw new Error("User not authenticated");
   }
 
@@ -50,8 +69,8 @@ export const addPoem = async (poem: {
   });
 
   if (!response.ok) {
-    const err = await response.text();
-    throw new Error(err);
+    const text = await response.text().catch(() => null);
+    throw new Error(text || "Failed to create poem");
   }
 
   return response.json();

@@ -1,11 +1,13 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import CreatePoemScreen from "../screens/CreatePoemScreen";
 import DiscoverScreen from "../screens/DiscoverScreen";
 import PoemDetailScreen from "../screens/PoemDetailScreen";
 
 export type DiscoverStackParamList = {
   DiscoverMain: undefined;
   PoemDetail: { poem: any };
+  CreatePoem: undefined;
 };
 
 const Stack = createNativeStackNavigator<DiscoverStackParamList>();
@@ -29,6 +31,16 @@ export default function DiscoverStackNavigator() {
           headerBackTitleVisible: false,
           animation: "fade_from_bottom",
         })}
+      />
+      <Stack.Screen
+        name="CreatePoem"
+        component={CreatePoemScreen}
+        options={{
+          title: "Create Poem",
+          headerStyle: { backgroundColor: "#0B0018" },
+          headerTintColor: "#FFD700",
+          animation: "fade_from_bottom",
+        }}
       />
     </Stack.Navigator>
   );

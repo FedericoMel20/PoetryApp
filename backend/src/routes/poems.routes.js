@@ -24,12 +24,18 @@ router.get("/debug", async (req, res) => {
 // GET all poems
 router.get("/", async (req, res) => {
   try {
-    const { data, error } = await supabase
-      .from("poems")
-      .select("*")
-      .order("created_at", { ascending: false });
+    const { author_id } = req.query;
+
+    let query = supabase.from("poems").select("*").order("created_at", { ascending: false });
+
+    if (author_id) {
+      query = query.eq("author_id", author_id);
+    }
+
+    const { data, error } = await query;
 
     if (error) throw error;
+
     res.json(data);
   } catch (err) {
     console.error('Error fetching poems:', err);
@@ -46,7 +52,7 @@ router.post("/", async (req, res) => {
   console.log("HEADERS:", req.headers);
   console.log("AUTH HEADER:", req.headers.authorization);
 
-  const { title, content, author, category, image } = req.body;
+  const { title, content, category, image } = req.body;
 
   // 🔐 Get auth header
   const authHeader = req.headers.authorization;
@@ -54,40 +60,51 @@ router.post("/", async (req, res) => {
     return res.status(401).json({ error: "Missing Authorization header" });
   }
 
-  const token = authHeader.replace("Bearer ", "");
-  // 🔐 Get logged-in user (do not mutate client)
-  const { data: authData, error: authError } = await supabase.auth.getUser(token);
+  const token = req.headers.authorization?.replace("Bearer ", "");
+
+  if (!token) {
+    return res.status(401).json({ error: "Missing auth token" });
+  }
+
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser(token);
 
   console.log("👤 Auth result:", authData, authError);
 
-  const user = authData?.user;
   if (authError || !user) {
     return res.status(401).json({ error: "Invalid token" });
   }
 
-  // Perform insert and let Postgres/Supabase return the raw error
-  const { data: inserted, error: insertError } = await supabase
-    .from("poems")
-    .insert({
-      title,
-      content,
-      author: author || "Anonymous",
-      category,
-      image,
-      rating: 0,
-      author_id: user.id,
-    })
-    .select()
-    .single();
-
-  console.log("🧾 INSERT RESULT:", inserted);
-  console.log("❌ INSERT ERROR:", insertError);
-
-  if (insertError) {
-    return res.status(500).json({ error: "DB insert failed", details: insertError });
+  if (!title || !content) {
+    return res.status(400).json({ error: "Title and content are required" });
   }
 
-  return res.status(201).json(inserted);
+  try {
+    const { data, error } = await supabase
+      .from("poems")
+      .insert([
+        {
+          title,
+          content,
+          category,
+          image,
+          author: "Anonymous",
+          author_id: user.id,
+          rating: 0,
+        },
+      ])
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    res.status(201).json(data);
+  } catch (err) {
+    console.error("Insert poem error:", err);
+    res.status(500).json({ error: "Failed to create poem" });
+  }
 });
 
 export default router;

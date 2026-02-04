@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Constants from "expo-constants";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Animated,
   Dimensions,
@@ -15,7 +15,7 @@ import {
 } from "react-native";
 import { getPoems } from "../api/poems";
 import PoemCard from "../components/PoemCard";
-import { useAuth } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 import { HomeStackParamList } from "../navigation/HomeStackNavigator";
 
 
@@ -31,7 +31,11 @@ export default function HomeScreen() {
 
   const scrollY = new Animated.Value(0);
 
-  const { user, loading } = useAuth();
+  const auth = useContext(AuthContext);
+
+  if (!auth) return null;
+
+  const { user, loading } = auth;
 
   useEffect(() => {
     console.log("🔐 AUTH STATE:", { loading, user });
