@@ -7,6 +7,8 @@ type AuthContextType = {
   session: Session | null;
   loading: boolean;
   signOut: () => Promise<void>;
+  supabase: typeof supabase; // Expose supabase
+  refreshUser: () => Promise<void>; // Expose refreshUser
 };
 
 export const AuthContext = createContext<AuthContextType | null>(null);
@@ -38,6 +40,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
   };
 
+  const refreshUser = async () => {
+    try {
+      const { data, error } = await supabase.auth.getUser();
+      if (error) throw error;
+      setUser(data.user);
+    } catch (error) {
+      console.error('Error refreshing user:', error);
+      throw error;
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -45,6 +58,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         session,
         loading,
         signOut,
+        supabase, // Expose supabase
+        refreshUser, // Expose refreshUser
       }}
     >
       {children}

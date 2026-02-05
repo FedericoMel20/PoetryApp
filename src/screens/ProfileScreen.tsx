@@ -77,9 +77,13 @@ export default function ProfileScreen() {
           <Text style={styles.value}>{user?.email}</Text>
         </View>
 
-        <TouchableOpacity style={styles.outlineButton}>
+        <TouchableOpacity
+          style={styles.outlineButton}
+          onPress={() => navigation.navigate("EditProfile")}
+        >
           <Text style={styles.outlineText}>Update Profile</Text>
         </TouchableOpacity>
+
       </View>
 
       {/* My Poems */}
