@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { decode } from "base64-arraybuffer";
 import * as ImagePicker from "expo-image-picker";
 import React, { useContext, useState } from "react";
 import {
@@ -60,12 +61,13 @@ export default function EditProfileScreen({ navigation }: any) {
         throw new Error("Failed to get base64 image data");
       }
 
-      const ext = asset.uri.split(".").pop() || "jpg";
+      const ext = asset.uri.split(".").pop()?.toLowerCase() || "jpg";
       const filePath = `${user.id}/avatar.${ext}`;
+      const base64FileData = decode(asset.base64);
 
       const { error: uploadError } = await supabase.storage
         .from("avatars")
-        .upload(filePath, Buffer.from(asset.base64, "base64"), {
+        .upload(filePath, base64FileData, {
           contentType: `image/${ext}`,
           upsert: true,
         });
