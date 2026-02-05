@@ -27,7 +27,16 @@ export default function EditProfileScreen({ navigation }: any) {
     "";
 
   const [username, setUsername] = useState(initialUsername);
-  const [loading, setLoading] = useState(false);
+  const [loadingAvatar, setLoadingAvatar] = useState(false);
+  const [loadingUsername, setLoadingUsername] = useState(false);
+
+  const goBackSafely = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.navigate("ProfileMain");
+    }
+  };
 
   const pickAvatar = async () => {
     if (!user) return;
@@ -42,7 +51,7 @@ export default function EditProfileScreen({ navigation }: any) {
     if (result.canceled) return;
 
     try {
-      setLoading(true);
+      setLoadingAvatar(true);
 
       const asset = result.assets[0];
       const response = await fetch(asset.uri);
@@ -75,12 +84,12 @@ export default function EditProfileScreen({ navigation }: any) {
       await refreshUser();
 
       Alert.alert("Avatar updated ✨");
-      navigation.goBack();
+      goBackSafely();
     } catch (err: any) {
       console.error("Avatar upload error:", err);
       Alert.alert("Error", err.message || "Failed to upload avatar");
     } finally {
-      setLoading(false);
+      setLoadingAvatar(false);
     }
   };
 
@@ -91,7 +100,7 @@ export default function EditProfileScreen({ navigation }: any) {
     }
 
     try {
-      setLoading(true);
+      setLoadingUsername(true);
 
       const { data, error } = await supabase.auth.updateUser({
         data: { username },
@@ -105,12 +114,12 @@ export default function EditProfileScreen({ navigation }: any) {
       await refreshUser();
 
       Alert.alert("Profile updated ✨");
-      navigation.goBack();
+      goBackSafely();
     } catch (err: any) {
       console.error("Update profile error:", err);
       Alert.alert("Error", err.message || "Failed to update profile");
     } finally {
-      setLoading(false);
+      setLoadingUsername(false);
     }
   };
 
@@ -118,7 +127,7 @@ export default function EditProfileScreen({ navigation }: any) {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.headerRow}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={goBackSafely}>
           <Ionicons name="chevron-back" size={24} color={colors.accent} />
         </TouchableOpacity>
         <Text style={styles.header}>Edit Profile</Text>
@@ -152,10 +161,10 @@ export default function EditProfileScreen({ navigation }: any) {
       <TouchableOpacity
         style={styles.saveBtn}
         onPress={handleSave}
-        disabled={loading}
+        disabled={loadingUsername}
       >
         <Text style={styles.saveText}>
-          {loading ? "Saving..." : "Save Changes"}
+          {loadingUsername ? "Saving..." : "Save Changes"}
         </Text>
       </TouchableOpacity>
     </View>
