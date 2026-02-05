@@ -30,7 +30,7 @@ type Comment = {
   avatar_url?: string | null;
 };
 
-export default function PoemDetailScreen({ route }: any) {
+export default function PoemDetailScreen({ route, navigation }: any) {
   const { poem } = route.params;
   const auth = useContext(AuthContext);
 
@@ -133,6 +133,24 @@ export default function PoemDetailScreen({ route }: any) {
   };
 
   const handleSubmitRating = async () => {
+    if (!auth?.user) {
+      Alert.alert(
+        "Sign In Required",
+        "Please sign in to submit a review",
+        [
+          { text: "Cancel", style: "cancel" },
+          {
+            text: "Sign In",
+            onPress: () => {
+              setShowModal(false);
+              navigation.navigate("Login");
+            },
+          },
+        ]
+      );
+      return;
+    }
+
     if (!tempRating && !reviewText.trim()) return;
 
     try {
@@ -213,7 +231,26 @@ export default function PoemDetailScreen({ route }: any) {
           </View>
 
           {/* Rate Button */}
-          <TouchableOpacity style={styles.rateButton} onPress={() => setShowModal(true)}>
+          <TouchableOpacity
+            style={styles.rateButton}
+            onPress={() => {
+              if (!auth?.user) {
+                Alert.alert(
+                  "Sign In Required",
+                  "Please sign in to rate poems",
+                  [
+                    { text: "Cancel", style: "cancel" },
+                    {
+                      text: "Sign In",
+                      onPress: () => navigation.navigate("Login"),
+                    },
+                  ]
+                );
+                return;
+              }
+              setShowModal(true);
+            }}
+          >
             <Ionicons name="star-outline" size={18} color="#FFD700" />
             <Text style={styles.rateText}>Rate this Poem</Text>
           </TouchableOpacity>

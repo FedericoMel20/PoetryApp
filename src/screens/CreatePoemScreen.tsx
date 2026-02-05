@@ -1,5 +1,5 @@
 import { Picker } from "@react-native-picker/picker";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Alert,
   ScrollView,
@@ -10,6 +10,7 @@ import {
   View,
 } from "react-native";
 import { addPoem } from "../api/poems";
+import { AuthContext } from "../context/AuthContext";
 
 const CATEGORIES = [
   "Love",
@@ -38,13 +39,36 @@ const RANDOM_IMAGES = [
 ];
 
 export default function CreatePoemScreen({ navigation }: any) {
+  const auth = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0]);
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    // Redirect to login if not authenticated
+    if (!auth?.user) {
+      Alert.alert(
+        "Sign In Required",
+        "You must be signed in to create a poem",
+        [
+          {
+            text: "Sign In",
+            onPress: () => navigation.navigate("Login"),
+          },
+          { text: "Cancel", onPress: () => navigation.goBack() },
+        ]
+      );
+    }
+  }, [auth?.user, navigation]);
+
   const handleSubmit = async () => {
+    if (!auth?.user) {
+      Alert.alert("Sign In Required", "You must be signed in to create a poem");
+      return;
+    }
+
     if (!title.trim() || !content.trim()) {
       Alert.alert("Missing fields", "Title and content are required.");
       return;

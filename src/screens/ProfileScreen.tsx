@@ -4,6 +4,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
+  Alert,
   FlatList,
   Image,
   ScrollView,
@@ -21,6 +22,23 @@ import colors from "../theme/colors";
 export default function ProfileScreen() {
   const auth = useContext(AuthContext);
   const navigation = useNavigation<NativeStackNavigationProp<ProfileStackParamList>>();
+
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!auth?.user) {
+      Alert.alert(
+        "Sign In Required",
+        "You must be signed in to view your profile",
+        [
+          {
+            text: "Sign In",
+            onPress: () => navigation.navigate("ProfileMain"),
+          },
+          { text: "Cancel", onPress: () => navigation.goBack() },
+        ]
+      );
+    }
+  }, [auth?.user, navigation]);
 
   if (!auth) return null;
 
