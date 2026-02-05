@@ -429,7 +429,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
   },
-  commentUser: { color: "#FFD700", fontWeight: "600", fontSize: 13 },
+  commentUser: { color: "#C49BFF", fontWeight: "600", fontSize: 13 },
   commentText: { color: colors.text, fontSize: 14 },
   modalOverlay: {
     flex: 1,

@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { decode } from "base64-arraybuffer";
 import * as ImagePicker from "expo-image-picker";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   Alert,
   Image,
@@ -17,6 +17,13 @@ import colors from "../theme/colors";
 
 export default function EditProfileScreen({ navigation }: any) {
   const auth = useContext(AuthContext);
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   if (!auth) return null;
 
@@ -40,7 +47,7 @@ export default function EditProfileScreen({ navigation }: any) {
   };
 
   const pickAvatar = async () => {
-    if (!user) return;
+    if (!user || loadingAvatar) return;
 
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -50,81 +57,83 @@ export default function EditProfileScreen({ navigation }: any) {
       base64: true,
     });
 
-    if (result.canceled) return;
+    if (result.canceled || !result.assets?.length) return;
+
+    const file = result.assets[0];
+
+    if (!file.base64) {
+      Alert.alert("Error", "Image data unavailable");
+      return;
+    }
 
     try {
-      setLoadingAvatar(true);
+      if (isMounted.current) setLoadingAvatar(true);
 
-      const asset = result.assets[0];
-      
-      if (!asset.base64) {
-        throw new Error("Failed to get base64 image data");
-      }
+      const ext = file.uri?.split(".").pop()?.toLowerCase() || "jpg";
+      const filePath = `${user.id}.${ext}`;
 
-      const ext = asset.uri.split(".").pop()?.toLowerCase() || "jpg";
-      const filePath = `${user.id}/avatar.${ext}`;
-      const base64FileData = decode(asset.base64);
-
-      const { error: uploadError } = await supabase.storage
+      const { error } = await supabase.storage
         .from("avatars")
-        .upload(filePath, base64FileData, {
+        .upload(filePath, decode(file.base64), {
           contentType: `image/${ext}`,
           upsert: true,
         });
 
-      if (uploadError) throw uploadError;
+      if (error) throw error;
 
       const { data } = supabase.storage
         .from("avatars")
         .getPublicUrl(filePath);
 
-      const avatar_url = data.publicUrl;
-
       const { error: updateError } = await supabase.auth.updateUser({
-        data: { avatar_url },
+        data: { avatar_url: data.publicUrl },
       });
 
       if (updateError) throw updateError;
 
       await refreshUser();
-
       Alert.alert("Avatar updated ✨");
-      goBackSafely();
-    } catch (err: any) {
-      console.error("Avatar upload error:", err);
-      Alert.alert("Error", err.message || "Failed to upload avatar");
+    } catch (e: any) {
+      console.error("Avatar upload error:", e);
+      Alert.alert(
+        "Upload failed",
+        typeof e === "string" ? e : e?.message || "Please try again"
+      );
     } finally {
-      setLoadingAvatar(false);
+      if (isMounted.current) {
+        setLoadingAvatar(false);
+      }
     }
   };
 
   const handleSave = async () => {
     if (!username.trim()) {
-      Alert.alert("Invalid username", "Username cannot be empty.");
+      Alert.alert("Missing field", "Username cannot be empty");
       return;
     }
 
     try {
-      setLoadingUsername(true);
+      if (isMounted.current) setLoadingUsername(true);
 
-      const { data, error } = await supabase.auth.updateUser({
+      const { error } = await supabase.auth.updateUser({
         data: { username },
       });
 
-      if (error) {
-        throw error;
-      }
+      if (error) throw error;
 
-      // Optional but recommended: refresh user in context
       await refreshUser();
-
       Alert.alert("Profile updated ✨");
       goBackSafely();
-    } catch (err: any) {
-      console.error("Update profile error:", err);
-      Alert.alert("Error", err.message || "Failed to update profile");
+    } catch (e: any) {
+      console.error("Update profile error:", e);
+      Alert.alert(
+        "Error",
+        typeof e === "string" ? e : e?.message || "Failed to update profile"
+      );
     } finally {
-      setLoadingUsername(false);
+      if (isMounted.current) {
+        setLoadingUsername(false);
+      }
     }
   };
 

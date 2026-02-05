@@ -1,5 +1,5 @@
 import { Picker } from "@react-native-picker/picker";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   Alert,
   ScrollView,
@@ -40,6 +40,7 @@ const RANDOM_IMAGES = [
 
 export default function CreatePoemScreen({ navigation }: any) {
   const auth = useContext(AuthContext);
+  const isMounted = useRef(true);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0]);
@@ -47,7 +48,12 @@ export default function CreatePoemScreen({ navigation }: any) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Redirect to login if not authenticated
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
     if (!auth?.user) {
       Alert.alert(
         "Sign In Required",
@@ -64,17 +70,12 @@ export default function CreatePoemScreen({ navigation }: any) {
   }, [auth?.user, navigation]);
 
   const handleSubmit = async () => {
-    if (!auth?.user) {
-      Alert.alert("Sign In Required", "You must be signed in to create a poem");
-      return;
-    }
-
     if (!title.trim() || !content.trim()) {
-      Alert.alert("Missing fields", "Title and content are required.");
+      Alert.alert("Missing fields", "Title and content are required");
       return;
     }
 
-    setLoading(true);
+    if (isMounted.current) setLoading(true);
 
     try {
       await addPoem({
@@ -86,12 +87,17 @@ export default function CreatePoemScreen({ navigation }: any) {
           RANDOM_IMAGES[Math.floor(Math.random() * RANDOM_IMAGES.length)],
       });
 
-      Alert.alert("✨ Published", "Your poem has been released.");
+      Alert.alert("✨ Published");
       navigation.goBack();
-    } catch {
-      Alert.alert("Error", "Failed to publish poem.");
-    } finally {
-      setLoading(false);
+      return;
+    } catch (e: any) {
+      console.error("Create poem error:", e);
+      if (isMounted.current) {
+        Alert.alert(
+          "Error",
+          typeof e === "string" ? e : e?.message || "Failed to publish poem"
+        );
+      }
     }
   };
 
