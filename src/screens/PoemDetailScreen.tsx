@@ -4,6 +4,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   Alert,
   Animated,
+  Image,
   ImageBackground,
   KeyboardAvoidingView,
   Modal,
@@ -26,6 +27,7 @@ type Comment = {
   text: string;
   rating?: number;
   user_id?: string;
+  avatar_url?: string | null;
 };
 
 export default function PoemDetailScreen({ route }: any) {
@@ -240,7 +242,14 @@ export default function PoemDetailScreen({ route }: any) {
                 activeOpacity={0.85}
                 onLongPress={() => handleDeleteComment(c.id, c.user_id)}
               >
-                <Ionicons name="person-circle" size={30} color="#aaa" />
+                {c.avatar_url ? (
+                  <Image
+                    source={{ uri: c.avatar_url }}
+                    style={styles.commentAvatar}
+                  />
+                ) : (
+                  <Ionicons name="person-circle" size={40} color="#aaa" />
+                )}
                 <View style={{ marginLeft: 10, flex: 1 }}>
                   <Text style={styles.commentUser}>{c.user}</Text>
 
@@ -377,6 +386,11 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 10,
     marginBottom: 10,
+  },
+  commentAvatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
   },
   commentUser: { color: "#FFD700", fontWeight: "600", fontSize: 13 },
   commentText: { color: colors.text, fontSize: 14 },

@@ -29,7 +29,7 @@ router.get("/:poemId", async (req, res) => {
   try {
     const { data, error } = await supabase
       .from("comments")
-      .select("id, content, rating, created_at, user_id")
+      .select("id, content, rating, created_at, user_id, username, avatar_url")
       .eq("poem_id", poemId)
       .order("created_at", { ascending: true });
 
@@ -40,7 +40,8 @@ router.get("/:poemId", async (req, res) => {
       text: c.content,
       rating: c.rating,
       user_id: c.user_id,
-      user: "Anonymous",
+      user: c.username || "Anonymous",
+      avatar_url: c.avatar_url || null,
     }));
 
     res.json(mapped);
@@ -74,6 +75,10 @@ router.post("/", async (req, res) => {
       return res.status(401).json({ error: "Invalid token" });
     }
 
+    // Extract username and avatar from user metadata
+    const username = user.user_metadata?.username || "Anonymous";
+    const avatar_url = user.user_metadata?.avatar_url || null;
+
     // Insert comment with authenticated client
     const { error } = await authClient
       .from("comments")
@@ -83,6 +88,8 @@ router.post("/", async (req, res) => {
           user_id: user.id,
           content,
           rating,
+          username,
+          avatar_url,
         },
       ]);
 
