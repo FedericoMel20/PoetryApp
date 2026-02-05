@@ -3,13 +3,13 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useContext, useEffect, useState } from "react";
 import {
-  ActivityIndicator,
-  Alert,
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    ActivityIndicator,
+    Alert,
+    FlatList,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { deletePoem, getPoemsByAuthor } from "../api/poems";
 import PoemCard from "../components/PoemCard";
@@ -23,6 +23,11 @@ export default function ManagePoemsScreen() {
 
   const [poems, setPoems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const username =
+    auth?.user?.user_metadata?.username ||
+    auth?.user?.email?.split("@")[0] ||
+    "Anonymous";
 
   useEffect(() => {
     let mounted = true;
@@ -66,7 +71,7 @@ export default function ManagePoemsScreen() {
     <View style={styles.row}>
       <PoemCard
         title={item.title}
-        author={item.author || "Anonymous"}
+        author={username}
         image={item.image}
         onPress={() => navigation.navigate("PoemDetail", { poem: item })}
       />

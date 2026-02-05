@@ -1,8 +1,8 @@
 // src/screens/ProfileScreen.tsx
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -22,13 +22,28 @@ export default function ProfileScreen() {
 
   if (!auth) return null;
 
-  const { user, signOut } = auth;
+  const { user, signOut, refreshUser } = auth;
 
-  const username =
-    user?.user_metadata?.username || user?.email?.split("@")[0] || "Verse_Weaver";
+  const [username, setUsername] = useState(
+    user?.user_metadata?.username || user?.email?.split("@")[0] || "Verse_Weaver"
+  );
 
   const [myPoems, setMyPoems] = useState<any[]>([]);
   const [loadingPoems, setLoadingPoems] = useState(true);
+
+  // Update username when user metadata changes
+  useEffect(() => {
+    setUsername(
+      user?.user_metadata?.username || user?.email?.split("@")[0] || "Verse_Weaver"
+    );
+  }, [user]);
+
+  // Refresh user data when screen comes into focus
+  useFocusEffect(
+    useCallback(() => {
+      refreshUser().catch(err => console.error("Failed to refresh user:", err));
+    }, [refreshUser])
+  );
 
   useEffect(() => {
     let mounted = true;

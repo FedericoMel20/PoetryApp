@@ -81,6 +81,9 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: "Title and content are required" });
   }
 
+  // Get username from user metadata
+  const username = user.user_metadata?.username || user.email?.split("@")[0] || "Anonymous";
+
   try {
     const { data, error } = await supabase
       .from("poems")
@@ -90,7 +93,7 @@ router.post("/", async (req, res) => {
           content,
           category,
           image,
-          author: "Anonymous",
+          author: username,
           author_id: user.id,
           rating: 0,
         },

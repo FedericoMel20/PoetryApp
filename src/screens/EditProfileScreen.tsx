@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { supabase } from "../config/supabase";
 import { AuthContext } from "../context/AuthContext";
 import colors from "../theme/colors";
 
@@ -35,20 +36,21 @@ export default function EditProfileScreen({ navigation }: any) {
     try {
       setLoading(true);
 
-      const { error } = await auth.supabase.auth.updateUser({
+      const { data, error } = await supabase.auth.updateUser({
         data: { username },
       });
 
-      if (error) throw error;
+      if (error) {
+        throw error;
+      }
 
-      // 🔁 refresh context user
+      // Optional but recommended: refresh user in context
       await refreshUser();
-      
-      Alert.alert("Success", "Profile updated ✨", [
-        { text: "OK", onPress: () => navigation.goBack() }
-      ]);
+
+      Alert.alert("Profile updated ✨");
+      navigation.goBack();
     } catch (err: any) {
-      console.error('Update profile error:', err);
+      console.error("Update profile error:", err);
       Alert.alert("Error", err.message || "Failed to update profile");
     } finally {
       setLoading(false);

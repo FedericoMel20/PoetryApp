@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
     Animated,
     ImageBackground,
@@ -14,6 +14,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import { AuthContext } from "../context/AuthContext";
 import colors from "../theme/colors";
 
 type Comment = {
@@ -24,6 +25,13 @@ type Comment = {
 
 export default function PoemDetailScreen({ route }: any) {
   const { poem } = route.params;
+  const auth = useContext(AuthContext);
+
+  // Determine author name - use current username if it's the user's own poem
+  const authorName = 
+    poem.author_id && auth?.user?.id && poem.author_id === auth.user.id
+      ? (auth.user.user_metadata?.username || auth.user.email?.split("@")[0] || "Anonymous")
+      : (poem.author || "Anonymous");
 
   const initialComments: Comment[] = Array.isArray(poem.ratingComments)
     ? poem.ratingComments.map((c: any) =>
@@ -121,7 +129,7 @@ export default function PoemDetailScreen({ route }: any) {
           {/* Header Section */}
           <View style={styles.header}>
             <Text style={styles.title}>{poem.title}</Text>
-            {poem.author && <Text style={styles.author}>by {poem.author}</Text>}
+            <Text style={styles.author}>by {authorName}</Text>
 
             {/* 💛 Favorite Icon */}
             <Animated.View style={[styles.favoriteIcon, { transform: [{ scale: scaleAnim }] }]}>
