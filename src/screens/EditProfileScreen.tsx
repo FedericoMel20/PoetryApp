@@ -46,6 +46,7 @@ export default function EditProfileScreen({ navigation }: any) {
       allowsEditing: true,
       aspect: [1, 1],
       quality: 0.8,
+      base64: true,
     });
 
     if (result.canceled) return;
@@ -54,16 +55,18 @@ export default function EditProfileScreen({ navigation }: any) {
       setLoadingAvatar(true);
 
       const asset = result.assets[0];
-      const response = await fetch(asset.uri);
-      const blob = await response.blob();
+      
+      if (!asset.base64) {
+        throw new Error("Failed to get base64 image data");
+      }
 
       const ext = asset.uri.split(".").pop() || "jpg";
       const filePath = `${user.id}/avatar.${ext}`;
 
       const { error: uploadError } = await supabase.storage
         .from("avatars")
-        .upload(filePath, blob, {
-          contentType: blob.type,
+        .upload(filePath, Buffer.from(asset.base64, "base64"), {
+          contentType: `image/${ext}`,
           upsert: true,
         });
 

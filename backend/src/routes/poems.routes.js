@@ -1,7 +1,22 @@
+import { createClient } from "@supabase/supabase-js";
 import express from "express";
 import { supabase } from "../config/supabase.js";
 
 const router = express.Router();
+
+// Helper to create authenticated client with user's token
+const createAuthClient = (token) => {
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+
+  return createClient(supabaseUrl, supabaseAnonKey, {
+    global: {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  });
+};
 
 // Debug route: run a minimal Supabase query and optionally return raw error
 router.get("/debug", async (req, res) => {
@@ -66,10 +81,11 @@ router.post("/", async (req, res) => {
     return res.status(401).json({ error: "Missing auth token" });
   }
 
+  const authClient = createAuthClient(token);
   const {
     data: { user },
     error: authError,
-  } = await supabase.auth.getUser(token);
+  } = await authClient.auth.getUser();
 
   console.log("👤 Auth result:", user, authError);
 
@@ -85,7 +101,7 @@ router.post("/", async (req, res) => {
   const username = user.user_metadata?.username || user.email?.split("@")[0] || "Anonymous";
 
   try {
-    const { data, error } = await supabase
+    const { data, error } = await authClient
       .from("poems")
       .insert([
         {
@@ -121,10 +137,23 @@ router.delete("/:id", async (req, res) => {
   }
 
   try {
-    const { data, error } = await supabase
+    const authHeader = req.headers.authorization;
+    if (!authHeader) return res.status(401).json({ error: "Unauthorized" });
+
+    const token = authHeader.replace("Bearer ", "");
+    const authClient = createAuthClient(token);
+    const {
+      data: { user },
+      error: authError,
+    } = await authClient.auth.getUser();
+
+    if (authError || !user) return res.status(401).json({ error: "Unauthorized" });
+
+    const { data, error } = await authClient
       .from("poems")
       .delete()
       .eq("id", poemId)
+      .eq("author_id", user.id)
       .select();
 
     if (error) {
@@ -150,16 +179,17 @@ router.put("/:id", async (req, res) => {
     if (!authHeader) return res.status(401).json({ error: "Unauthorized" });
 
     const token = authHeader.replace("Bearer ", "");
+    const authClient = createAuthClient(token);
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser(token);
+    } = await authClient.auth.getUser();
 
     if (authError || !user) return res.status(401).json({ error: "Unauthorized" });
     const { id } = req.params;
     const { title, content, category, image } = req.body;
 
-    const { data, error } = await supabase
+    const { data, error } = await authClient
       .from("poems")
       .update({ title, content, category, image })
       .eq("id", id)
