@@ -5,6 +5,7 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   FlatList,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -78,7 +79,16 @@ export default function ProfileScreen() {
 
       {/* Avatar */}
       <View style={styles.avatarWrapper}>
-        <Ionicons name="person-circle" size={96} color={colors.accent} />
+        <TouchableOpacity onPress={() => navigation.navigate("EditProfile")}>
+          {user?.user_metadata?.avatar_url ? (
+            <Image
+              source={{ uri: user.user_metadata.avatar_url }}
+              style={styles.avatar}
+            />
+          ) : (
+            <Ionicons name="person-circle" size={96} color={colors.accent} />
+          )}
+        </TouchableOpacity>
         <Text style={styles.username}>{username}</Text>
         <Text style={styles.subtitle}>Poet • Dreamer • Storyteller</Text>
       </View>
@@ -162,6 +172,13 @@ const styles = StyleSheet.create({
   avatarWrapper: {
     alignItems: "center",
     marginBottom: 25,
+  },
+  avatar: {
+    width: 96,
+    height: 96,
+    borderRadius: 48,
+    borderWidth: 2,
+    borderColor: "#FFD700",
   },
   username: {
     color: "#FFD700",

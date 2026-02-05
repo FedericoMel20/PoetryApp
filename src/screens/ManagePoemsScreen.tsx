@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
     ActivityIndicator,
     Alert,
@@ -29,25 +29,30 @@ export default function ManagePoemsScreen() {
     auth?.user?.email?.split("@")[0] ||
     "Anonymous";
 
-  useEffect(() => {
-    let mounted = true;
-    async function load() {
-      if (!auth?.user?.id) return setLoading(false);
-      try {
-        const data = await getPoemsByAuthor(auth.user.id);
-        if (!mounted) return;
-        setPoems(data || []);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        if (mounted) setLoading(false);
-      }
+  const loadPoems = async () => {
+    if (!auth?.user?.id) return setLoading(false);
+    try {
+      const data = await getPoemsByAuthor(auth.user.id);
+      setPoems(data || []);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
-    load();
-    return () => {
-      mounted = false;
-    };
+  };
+
+  useEffect(() => {
+    loadPoems();
   }, [auth]);
+
+  // Refresh when screen comes into focus
+  useFocusEffect(
+    useCallback(() => {
+      if (!loading && auth?.user?.id) {
+        loadPoems();
+      }
+    }, [loading, auth?.user?.id])
+  );
 
   const confirmDelete = (id: number) => {
     Alert.alert("Delete Poem", "This cannot be undone.", [

@@ -1,11 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
   ImageBackground,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -32,19 +33,40 @@ export default function DiscoverScreen() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [poems, setPoems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   const navigation = useNavigation<NativeStackNavigationProp<DiscoverStackParamList>>();
 
-  useEffect(() => {
-    async function fetchPoems() {
+  const fetchPoems = async () => {
+    try {
       const data = await getPoems();
       setPoems(data);
+    } catch (error) {
+      console.error("Failed to fetch poems:", error);
+    } finally {
       setLoading(false);
     }
+  };
+
+  useEffect(() => {
     fetchPoems();
   }, []);
 
-  
+  // Refresh when screen comes into focus
+  useFocusEffect(
+    useCallback(() => {
+      if (!loading) {
+        fetchPoems();
+      }
+    }, [loading])
+  );
+
+  // Pull to refresh handler
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await fetchPoems();
+    setRefreshing(false);
+  };
 
   const filtered =
     selectedCategory === "All"
@@ -122,6 +144,14 @@ export default function DiscoverScreen() {
         columnWrapperStyle={{ justifyContent: "space-between" }}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={colors.accent}
+            colors={[colors.accent]}
+          />
+        }
       />
 
       
@@ -158,6 +188,7 @@ const styles = StyleSheet.create({
   categoryScroll: {
     marginVertical: 15,
     paddingBottom: 6,
+    flexGrow: 0,
   },
   categoryButton: {
     borderWidth: 1,
@@ -166,8 +197,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     marginRight: 8,
-    marginBottom: 3, 
+    marginBottom: 3,
     minHeight: 38,
+    alignSelf: "flex-start",
   },
   activeCategory: {
     backgroundColor: colors.accent,

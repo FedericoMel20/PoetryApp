@@ -1,17 +1,17 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Constants from "expo-constants";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
-  Animated,
-  Dimensions,
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Animated,
+    Dimensions,
+    FlatList,
+    Image,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { getPoems } from "../api/poems";
 import PoemCard from "../components/PoemCard";
@@ -45,22 +45,31 @@ export default function HomeScreen() {
   const navigation =
     useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await getPoems();
-        setPoems(data);
-        const random = data[Math.floor(Math.random() * data.length)];
-        setQuote(random);
-      } catch (err) {
-        console.error("Error fetching poems:", err);
-      } finally {
-        setPoemsLoading(false);
-      }
+  const fetchData = async () => {
+    try {
+      const data = await getPoems();
+      setPoems(data);
+      const random = data[Math.floor(Math.random() * data.length)];
+      setQuote(random);
+    } catch (err) {
+      console.error("Error fetching poems:", err);
+    } finally {
+      setPoemsLoading(false);
     }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
+
+  // Refresh when screen comes into focus
+  useFocusEffect(
+    useCallback(() => {
+      if (!poemsLoading) {
+        fetchData();
+      }
+    }, [poemsLoading])
+  );
 
   const featured = poems.sort(() => 0.5 - Math.random()).slice(0, 5);
 

@@ -1,7 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
+import { decode } from "base64-arraybuffer";
+import * as ImagePicker from "expo-image-picker";
 import React, { useContext, useState } from "react";
 import {
   Alert,
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -26,6 +29,58 @@ export default function EditProfileScreen({ navigation }: any) {
 
   const [username, setUsername] = useState(initialUsername);
   const [loading, setLoading] = useState(false);
+
+  const pickAvatar = async () => {
+    if (!user) return;
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+      base64: true,
+    });
+
+    if (result.canceled) return;
+
+    try {
+      setLoading(true);
+
+      const file = result.assets[0];
+      const ext = file.uri.split(".").pop();
+      const fileName = `${user.id}.${ext}`;
+      const filePath = fileName;
+
+      const { error: uploadError } = await supabase.storage
+        .from("avatars")
+        .upload(filePath, decode(file.base64!), {
+          contentType: `image/${ext}`,
+          upsert: true,
+        });
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage
+        .from("avatars")
+        .getPublicUrl(filePath);
+
+      const avatar_url = data.publicUrl;
+
+      const { error: updateError } = await supabase.auth.updateUser({
+        data: { avatar_url },
+      });
+
+      if (updateError) throw updateError;
+
+      await refreshUser();
+      Alert.alert("Avatar updated ✨");
+    } catch (err: any) {
+      console.error(err);
+      Alert.alert("Error", "Failed to upload avatar");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSave = async () => {
     if (!username.trim()) {
@@ -67,13 +122,18 @@ export default function EditProfileScreen({ navigation }: any) {
         <Text style={styles.header}>Edit Profile</Text>
       </View>
 
-      {/* Avatar (placeholder) */}
-      <View style={styles.avatarWrapper}>
-        <Ionicons name="person-circle" size={100} color={colors.accent} />
-        <Text style={styles.avatarHint}>
-          Avatar upload coming soon
-        </Text>
-      </View>
+      {/* Avatar */}
+      <TouchableOpacity onPress={pickAvatar} style={styles.avatarEdit}>
+        {user?.user_metadata?.avatar_url ? (
+          <Image
+            source={{ uri: user.user_metadata.avatar_url }}
+            style={styles.avatar}
+          />
+        ) : (
+          <Ionicons name="camera" size={48} color="#FFD700" />
+        )}
+        <Text style={styles.avatarHint}>Tap to change avatar</Text>
+      </TouchableOpacity>
 
       {/* Username */}
       <Text style={styles.label}>Username</Text>
@@ -117,15 +177,21 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginLeft: 12,
   },
-  avatarWrapper: {
+  avatarEdit: {
     alignItems: "center",
-    marginBottom: 30,
+    marginBottom: 20,
+  },
+  avatar: {
+    width: 96,
+    height: 96,
+    borderRadius: 48,
+    borderWidth: 2,
+    borderColor: "#FFD700",
   },
   avatarHint: {
-    color: "#888",
+    color: "#C6B2FF",
     fontSize: 12,
     marginTop: 6,
-    fontStyle: "italic",
   },
   label: {
     color: "#C49BFF",
