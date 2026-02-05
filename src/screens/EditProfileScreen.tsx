@@ -1,5 +1,4 @@
 import { Ionicons } from "@expo/vector-icons";
-import { decode } from "base64-arraybuffer";
 import * as ImagePicker from "expo-image-picker";
 import React, { useContext, useState } from "react";
 import {
@@ -38,7 +37,6 @@ export default function EditProfileScreen({ navigation }: any) {
       allowsEditing: true,
       aspect: [1, 1],
       quality: 0.8,
-      base64: true,
     });
 
     if (result.canceled) return;
@@ -46,15 +44,17 @@ export default function EditProfileScreen({ navigation }: any) {
     try {
       setLoading(true);
 
-      const file = result.assets[0];
-      const ext = file.uri.split(".").pop();
-      const fileName = `${user.id}.${ext}`;
-      const filePath = fileName;
+      const asset = result.assets[0];
+      const response = await fetch(asset.uri);
+      const blob = await response.blob();
+
+      const ext = asset.uri.split(".").pop() || "jpg";
+      const filePath = `${user.id}.${ext}`;
 
       const { error: uploadError } = await supabase.storage
         .from("avatars")
-        .upload(filePath, decode(file.base64!), {
-          contentType: `image/${ext}`,
+        .upload(filePath, blob, {
+          contentType: blob.type,
           upsert: true,
         });
 
@@ -73,10 +73,12 @@ export default function EditProfileScreen({ navigation }: any) {
       if (updateError) throw updateError;
 
       await refreshUser();
+
       Alert.alert("Avatar updated ✨");
+      navigation.goBack();
     } catch (err: any) {
-      console.error(err);
-      Alert.alert("Error", "Failed to upload avatar");
+      console.error("Avatar upload error:", err);
+      Alert.alert("Error", err.message || "Failed to upload avatar");
     } finally {
       setLoading(false);
     }
