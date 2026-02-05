@@ -1,13 +1,13 @@
 import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
 import {
-    Alert,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { addPoem } from "../api/poems";
 
@@ -25,6 +25,16 @@ const RANDOM_IMAGES = [
   "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
   "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
   "https://images.unsplash.com/photo-1508830524289-0adcbe822b40",
+  "https://images.unsplash.com/photo-1501854140801-50d01698950b",
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+  "https://images.unsplash.com/photo-1500382017468-9049fed747ef",
+  "https://images.unsplash.com/photo-1469474099711-4245088ef525",
+  "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+  "https://images.unsplash.com/photo-1491555103946-3c631c586b8c",
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
+  "https://images.unsplash.com/photo-1439853949127-fa647821eba0",
+  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b"
 ];
 
 export default function CreatePoemScreen({ navigation }: any) {

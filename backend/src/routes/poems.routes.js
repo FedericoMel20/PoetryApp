@@ -71,7 +71,7 @@ router.post("/", async (req, res) => {
     error: authError,
   } = await supabase.auth.getUser(token);
 
-  console.log("👤 Auth result:", authData, authError);
+  console.log("👤 Auth result:", user, authError);
 
   if (authError || !user) {
     return res.status(401).json({ error: "Invalid token" });
