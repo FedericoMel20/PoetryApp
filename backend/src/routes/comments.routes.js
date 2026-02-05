@@ -12,9 +12,7 @@ router.get("/:poemId", async (req, res) => {
   try {
     const { data, error } = await supabase
       .from("comments")
-      .select(
-        "id, content, rating, created_at, user_id, profiles:auth.users ( email, raw_user_meta_data )"
-      )
+      .select("id, content, rating, created_at, user_id")
       .eq("poem_id", poemId)
       .order("created_at", { ascending: true });
 
@@ -25,10 +23,7 @@ router.get("/:poemId", async (req, res) => {
       text: c.content,
       rating: c.rating,
       user_id: c.user_id,
-      user:
-        c.profiles?.raw_user_meta_data?.username ||
-        c.profiles?.email?.split("@")[0] ||
-        "Anonymous",
+      user: "Anonymous",
     }));
 
     res.json(mapped);
@@ -48,10 +43,11 @@ router.post("/", async (req, res) => {
   const { poem_id, content, rating } = req.body;
 
   try {
+    supabase.auth.setAuth(token);
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser(token);
+    } = await supabase.auth.getUser();
 
     if (authError || !user) throw authError;
 
@@ -81,10 +77,11 @@ router.delete("/:commentId", async (req, res) => {
   const { commentId } = req.params;
 
   try {
+    supabase.auth.setAuth(token);
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser(token);
+    } = await supabase.auth.getUser();
 
     if (authError || !user) throw authError;
 
