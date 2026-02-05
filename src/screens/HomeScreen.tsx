@@ -166,6 +166,8 @@ export default function HomeScreen() {
                 title={item.title}
                 author={item.author}
                 image={{ uri: item.image }}
+                rating={typeof item.rating === "number" ? item.rating : undefined}
+                commentCount={item.comments_count ?? item.comment_count ?? item.comments?.length}
                 onPress={() => navigation.navigate("PoemDetail", { poem: item })}
               />
           )}

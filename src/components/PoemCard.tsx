@@ -1,10 +1,10 @@
 import React from "react";
 import {
-    ImageBackground,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import colors from "../theme/colors";
 
@@ -17,11 +17,15 @@ export default function PoemCard({
   title,
   author,
   image,
+  rating,
+  commentCount,
   onPress,
 }: {
   title: string;
   author: string;
   image: any;
+  rating?: number;
+  commentCount?: number;
   onPress?: () => void;
 }) {
   
@@ -41,6 +45,15 @@ export default function PoemCard({
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.author}>{author}</Text>
+          {typeof rating === "number" || typeof commentCount === "number" ? (
+            <Text style={styles.meta}>
+              {typeof rating === "number" ? `★ ${rating.toFixed(1)}` : ""}
+              {typeof rating === "number" && typeof commentCount === "number"
+                ? " • "
+                : ""}
+              {typeof commentCount === "number" ? `${commentCount} comments` : ""}
+            </Text>
+          ) : null}
         </View>
       </ImageBackground>
     </TouchableOpacity>
@@ -76,5 +89,10 @@ const styles = StyleSheet.create({
   author: {
     color: colors.secondaryText,
     fontSize: 12,
+  },
+  meta: {
+    color: colors.secondaryText,
+    fontSize: 11,
+    marginTop: 2,
   },
 });

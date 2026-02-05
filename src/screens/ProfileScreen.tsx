@@ -6,6 +6,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   FlatList,
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -74,84 +75,85 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <Text style={styles.header}>AUTHOR’S SANCTUARY</Text>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Header */}
+        <Text style={styles.header}>AUTHOR’S SANCTUARY</Text>
 
-      {/* Avatar */}
-      <View style={styles.avatarWrapper}>
-        <TouchableOpacity onPress={() => navigation.navigate("EditProfile")}>
-          {user?.user_metadata?.avatar_url ? (
-            <Image
-              source={{ uri: user.user_metadata.avatar_url }}
-              style={styles.avatar}
-            />
-          ) : (
-            <Ionicons name="person-circle" size={96} color={colors.accent} />
-          )}
-        </TouchableOpacity>
-        <Text style={styles.username}>{username}</Text>
-        <Text style={styles.subtitle}>Poet • Dreamer • Storyteller</Text>
-      </View>
-
-      {/* Account Details */}
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Account Details</Text>
-
-        <View style={styles.row}>
-          <Text style={styles.label}>Email</Text>
-          <Text style={styles.value}>{user?.email}</Text>
+        {/* Avatar */}
+        <View style={styles.avatarWrapper}>
+          <TouchableOpacity onPress={() => navigation.navigate("EditProfile")}>
+            {user?.user_metadata?.avatar_url ? (
+              <Image
+                source={{ uri: user.user_metadata.avatar_url }}
+                style={styles.avatar}
+              />
+            ) : (
+              <Ionicons name="person-circle" size={96} color={colors.accent} />
+            )}
+          </TouchableOpacity>
+          <Text style={styles.username}>{username}</Text>
+          <Text style={styles.subtitle}>Poet • Dreamer • Storyteller</Text>
         </View>
 
-        <TouchableOpacity
-          style={styles.outlineButton}
-          onPress={() => navigation.navigate("EditProfile")}
-        >
-          <Text style={styles.outlineText}>Update Profile</Text>
+        {/* Account Details */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Account Details</Text>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Email</Text>
+            <Text style={styles.value}>{user?.email}</Text>
+          </View>
+
+          <TouchableOpacity
+            style={styles.outlineButton}
+            onPress={() => navigation.navigate("EditProfile")}
+          >
+            <Text style={styles.outlineText}>Update Profile</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* My Poems */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>My Poems</Text>
+
+          {loadingPoems ? (
+            <Text style={styles.emptyText}>Loading your poems…</Text>
+          ) : myPoems.length === 0 ? (
+            <Text style={styles.emptyText}>You haven't written any poems yet.</Text>
+          ) : (
+            <FlatList
+              data={myPoems}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              keyExtractor={(item: any) => String(item.id || item._id || item.title)}
+              renderItem={({ item }) => (
+                <PoemCard
+                  title={item.title || "Untitled"}
+                  author={username}
+                  image={item.image || null}
+                  rating={typeof item.rating === "number" ? item.rating : undefined}
+                  commentCount={item.comments_count ?? item.comment_count ?? item.comments?.length}
+                  onPress={() => navigation.navigate("PoemDetail", { poem: item })}
+                />
+              )}
+              contentContainerStyle={{ paddingVertical: 6 }}
+            />
+          )}
+
+          <TouchableOpacity style={styles.manageBtn} onPress={() => navigation.navigate("ManagePoems")}>
+            <Ionicons name="add-circle" size={18} color="#FFD700" />
+            <Text style={styles.manageText}>Manage All Poems</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Logout */}
+        <TouchableOpacity style={styles.logoutBtn} onPress={signOut}>
+          <Text style={styles.logoutText}>Log Out</Text>
         </TouchableOpacity>
-
-      </View>
-
-      {/* My Poems */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>My Poems</Text>
-
-        {loadingPoems ? (
-          <Text style={styles.emptyText}>Loading your poems…</Text>
-        ) : myPoems.length === 0 ? (
-          <Text style={styles.emptyText}>You haven't written any poems yet.</Text>
-        ) : (
-          <FlatList
-            data={myPoems}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item: any) => String(item.id || item._id || item.title)}
-            renderItem={({ item }) => (
-              <PoemCard
-                title={item.title || "Untitled"}
-                author={username}
-                image={item.image || null}
-                onPress={() => navigation.navigate("PoemDetail", { poem: item })}
-              />
-            )}
-            contentContainerStyle={{ paddingVertical: 6 }}
-          />
-        )}
-
-        <TouchableOpacity style={styles.manageBtn} onPress={() => navigation.navigate("ManagePoems")}>
-          <Ionicons name="add-circle" size={18} color="#FFD700" />
-          <Text style={styles.manageText}>Manage All Poems</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Logout */}
-      <TouchableOpacity style={styles.logoutBtn} onPress={signOut}>
-        <Text style={styles.logoutText}>Log Out</Text>
-      </TouchableOpacity>
-
-      {/* Premium */}
-      <TouchableOpacity style={styles.premiumBtn}>
-        <Text style={styles.premiumText}>GO PREMIUM</Text>
-      </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 }
@@ -160,7 +162,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#0B0018",
+  },
+  content: {
     padding: 20,
+    paddingBottom: 40,
   },
   header: {
     color: colors.accent,
@@ -250,22 +255,12 @@ const styles = StyleSheet.create({
   logoutBtn: {
     alignItems: "center",
     marginBottom: 15,
+    paddingVertical: 12,
+    borderWidth: 1,
+    borderColor: "#C49BFF",
+    borderRadius: 24,
   },
   logoutText: {
     color: "#FF6B6B",
-  },
-  premiumBtn: {
-    backgroundColor: "#FFD700",
-    paddingVertical: 14,
-    borderRadius: 30,
-    alignItems: "center",
-    shadowColor: "#FFD700",
-    shadowOpacity: 0.6,
-    shadowRadius: 14,
-  },
-  premiumText: {
-    color: "#0B0018",
-    fontWeight: "800",
-    fontSize: 16,
   },
 });

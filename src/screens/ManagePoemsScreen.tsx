@@ -78,6 +78,8 @@ export default function ManagePoemsScreen() {
         title={item.title}
         author={username}
         image={item.image}
+        rating={typeof item.rating === "number" ? item.rating : undefined}
+        commentCount={item.comments_count ?? item.comment_count ?? item.comments?.length}
         onPress={() => navigation.navigate("PoemDetail", { poem: item })}
       />
 

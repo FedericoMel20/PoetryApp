@@ -58,7 +58,7 @@ export default function EditProfileScreen({ navigation }: any) {
       const blob = await response.blob();
 
       const ext = asset.uri.split(".").pop() || "jpg";
-      const filePath = `${user.id}.${ext}`;
+      const filePath = `${user.id}/avatar.${ext}`;
 
       const { error: uploadError } = await supabase.storage
         .from("avatars")

@@ -1,26 +1,31 @@
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
-    Animated,
-    ImageBackground,
-    KeyboardAvoidingView,
-    Modal,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Alert,
+  Animated,
+  ImageBackground,
+  KeyboardAvoidingView,
+  Modal,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
+import { addComment, deleteComment, getComments } from "../api/comments";
+import { supabase } from "../config/supabase";
 import { AuthContext } from "../context/AuthContext";
 import colors from "../theme/colors";
 
 type Comment = {
+  id?: number;
   user: string;
   text: string;
   rating?: number;
+  user_id?: string;
 };
 
 export default function PoemDetailScreen({ route }: any) {
@@ -33,25 +38,50 @@ export default function PoemDetailScreen({ route }: any) {
       ? (auth.user.user_metadata?.username || auth.user.email?.split("@")[0] || "Anonymous")
       : (poem.author || "Anonymous");
 
-  const initialComments: Comment[] = Array.isArray(poem.ratingComments)
-    ? poem.ratingComments.map((c: any) =>
-        typeof c === "string"
-          ? { user: "Anonymous", text: c }
-          : { user: c.user ?? "Anonymous", text: c.text ?? String(c) }
-      )
-    : [];
-
-  const [comments, setComments] = useState<Comment[]>(initialComments);
+  const [comments, setComments] = useState<Comment[]>([]);
   const [isFavorite, setIsFavorite] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [tempRating, setTempRating] = useState<number>(0);
   const [reviewText, setReviewText] = useState<string>("");
   const [scaleAnim] = useState(new Animated.Value(1));
 
+  const loadComments = useCallback(async () => {
+    try {
+      const data = await getComments(poem.id);
+      setComments(data);
+    } catch (e) {
+      console.error("Failed to load comments", e);
+    }
+  }, [poem.id]);
+
   // Load favorite status on mount
   useEffect(() => {
     checkIfFavorite();
   }, []);
+
+  useEffect(() => {
+    loadComments();
+
+    const channel = supabase
+      .channel(`comments:${poem.id}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "comments",
+          filter: `poem_id=eq.${poem.id}`,
+        },
+        () => {
+          loadComments();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [poem.id, loadComments]);
 
   const checkIfFavorite = async () => {
     try {
@@ -100,19 +130,40 @@ export default function PoemDetailScreen({ route }: any) {
     }
   };
 
-  const handleSubmitRating = () => {
+  const handleSubmitRating = async () => {
     if (!tempRating && !reviewText.trim()) return;
 
-    const newReview: Comment = {
-      user: "Melchiorri20",
-      text: reviewText.trim() || "No comment added.",
-      rating: tempRating,
-    };
+    try {
+      await addComment(poem.id, reviewText.trim(), tempRating);
+      await loadComments();
 
-    setComments([...comments, newReview]);
-    setShowModal(false);
-    setTempRating(0);
-    setReviewText("");
+      setShowModal(false);
+      setTempRating(0);
+      setReviewText("");
+    } catch {
+      Alert.alert("Error", "Failed to submit review");
+    }
+  };
+
+  const handleDeleteComment = async (commentId?: number, userId?: string) => {
+    if (!commentId) return;
+    if (!auth?.user?.id || auth.user.id !== userId) return;
+
+    Alert.alert("Delete comment", "Delete your comment?", [
+      { text: "Cancel", style: "cancel" },
+      {
+        text: "Delete",
+        style: "destructive",
+        onPress: async () => {
+          try {
+            await deleteComment(commentId);
+            await loadComments();
+          } catch {
+            Alert.alert("Error", "Failed to delete comment");
+          }
+        },
+      },
+    ]);
   };
 
   return (
@@ -147,7 +198,15 @@ export default function PoemDetailScreen({ route }: any) {
           <View style={styles.ratingContainer}>
             <Ionicons name="star" size={20} color={colors.accent} />
             <Text style={styles.ratingText}>
-              {poem.rating?.toFixed(1) ?? "0.0"} / 5
+              {(() => {
+                const ratings = comments.filter(
+                  (c) => typeof c.rating === "number" && c.rating > 0
+                );
+                const avgRating = ratings.length
+                  ? ratings.reduce((s, c) => s + (c.rating || 0), 0) / ratings.length
+                  : 0;
+                return `${avgRating.toFixed(1)} / 5`;
+              })()}
             </Text>
           </View>
 
@@ -175,7 +234,12 @@ export default function PoemDetailScreen({ route }: any) {
             const rating = Math.max(0, Math.min(5, c.rating ?? 0));
 
             return (
-              <View key={i} style={styles.commentCard}>
+              <TouchableOpacity
+                key={c.id ?? i}
+                style={styles.commentCard}
+                activeOpacity={0.85}
+                onLongPress={() => handleDeleteComment(c.id, c.user_id)}
+              >
                 <Ionicons name="person-circle" size={30} color="#aaa" />
                 <View style={{ marginLeft: 10, flex: 1 }}>
                   <Text style={styles.commentUser}>{c.user}</Text>
@@ -198,7 +262,7 @@ export default function PoemDetailScreen({ route }: any) {
 
                   <Text style={styles.commentText}>{c.text}</Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             );
           })}
 

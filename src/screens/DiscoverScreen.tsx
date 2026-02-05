@@ -81,6 +81,12 @@ export default function DiscoverScreen() {
     );
 
   const renderPoem = ({ item }: { item: any }) => (
+    (() => {
+      const rating = typeof item.rating === "number" ? item.rating : 0;
+      const commentCount =
+        item.comments_count ?? item.comment_count ?? item.comments?.length;
+
+      return (
     <TouchableOpacity
       style={styles.card}
       onPress={() => navigation.navigate("PoemDetail", { poem: item })}
@@ -96,11 +102,16 @@ export default function DiscoverScreen() {
           {item.author && <Text style={styles.author}>by {item.author}</Text>}
           <View style={styles.ratingRow}>
             <Ionicons name="star" size={14} color={colors.accent} />
-            <Text style={styles.ratingText}>{item.rating}</Text>
+            <Text style={styles.ratingText}>
+              {rating.toFixed(1)}
+              {typeof commentCount === "number" ? ` • ${commentCount} comments` : ""}
+            </Text>
           </View>
         </View>
       </ImageBackground>
     </TouchableOpacity>
+      );
+    })()
   );
 
   return (
