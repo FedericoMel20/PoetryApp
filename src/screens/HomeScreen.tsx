@@ -1,25 +1,21 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import Constants from "expo-constants";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
-    Animated,
-    Dimensions,
-    FlatList,
-    Image,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Animated,
+  Dimensions,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { getPoems } from "../api/poems";
 import PoemCard from "../components/PoemCard";
 import { AuthContext } from "../context/AuthContext";
 import { HomeStackParamList } from "../navigation/HomeStackNavigator";
-
-
-console.log("EXPO EXTRA:", Constants.expoConfig?.extra);
 
 
 const { width } = Dimensions.get("window");
@@ -37,11 +33,6 @@ export default function HomeScreen() {
 
   const { user, loading } = auth;
 
-  useEffect(() => {
-    console.log("🔐 AUTH STATE:", { loading, user });
-  }, [loading, user]);
-
-  
   const navigation =
     useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
 

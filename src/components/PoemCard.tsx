@@ -8,11 +8,6 @@ import {
 } from "react-native";
 import colors from "../theme/colors";
 
-// Local image map
-const localImages: Record<string, any> = {
-  "Blood_Silk.jpeg": require("../assets/images/poems/Blood_Silk.jpeg"),
-}
-
 export default function PoemCard({
   title,
   author,
@@ -28,11 +23,8 @@ export default function PoemCard({
   commentCount?: number;
   onPress?: () => void;
 }) {
-  
   const imageSource =
-    typeof image === "string"
-      ? localImages[image] || { uri: image } 
-      : image;
+    typeof image === "string" ? { uri: image } : image;
 
   return (
     <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.85}>

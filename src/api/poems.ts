@@ -10,9 +10,7 @@ const BASE_URL =
 // GET all poems
 export const getPoems = async () => {
   try {
-    console.log("Fetching poems from:", `${BASE_URL}/api/poems`);
-
-    const response = await fetch(`${BASE_URL}/api/poems`);
+    const response = await fetch(`${BASE_URL}/api/poems` );
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -29,7 +27,6 @@ export const getPoems = async () => {
 export const getPoemsByAuthor = async (authorId: string) => {
   try {
     const url = `${BASE_URL}/api/poems?author_id=${encodeURIComponent(authorId)}`;
-    console.log("Fetching poems for author:", url);
 
     const response = await fetch(url);
 
